@@ -1,0 +1,45 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: k6-test-integration-testing
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+#      initContainers:
+#        - name: wait-2m
+#          image: harbor.linecorp.com/lcp-settle/alpine
+#          imagePullPolicy: IfNotPresent
+#          command: [ "sleep", "10" ]
+      containers:
+        - name: k6-test-merchant-apis
+          image: loadimpact/k6
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: lcp-settle-oca-env
+                  key: NEXT_PUBLIC_API_URL
+            - name: AUTH_TOKEN
+              valueFrom:
+                configMapKeyRef:
+                  name: lcp-settle-oca-env
+                  key: NEXT_PUBLIC_API_KEY
+          args:
+            - run
+            - /k6-scripts/test-merchant-apis.js
+          volumeMounts:
+            - name: k6-scripts
+              mountPath: /k6-scripts
+      volumes:
+        - name: k6-scripts
+          configMap:
+            name: k6-scripts
+            items:
+              - key: 'test-merchant-apis.js'
+                path: 'test-merchant-apis.js'
+      restartPolicy: Never
+  backoffLimit: 0
