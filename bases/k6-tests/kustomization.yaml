@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
 #  - job-integration-testing.yaml
   - argo-workflow.yaml
-#  - pre-sync-job.yaml
+  - pre-sync-job.yaml
 
 configMapGenerator:
   - name: k6-scripts
