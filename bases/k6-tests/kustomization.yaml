@@ -6,7 +6,7 @@ resources:
   - argo-workflow.yaml
   - pre-sync-job.yaml
 
-configMapGenerator:
-  - name: k6-scripts
-    files:
-      - test-merchant-apis.js
+#configMapGenerator:
+#  - name: k6-scripts
+#    files:
+#      - test-merchant-apis.js
