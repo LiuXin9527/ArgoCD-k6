@@ -2,6 +2,9 @@ apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
   generateName: steps-
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   entrypoint: hello-hello-hello
 
