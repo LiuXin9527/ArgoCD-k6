@@ -7,7 +7,6 @@ metadata:
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   entrypoint: hello-hello-hello
-
   # This spec contains two templates: hello-hello-hello and whalesay
   templates:
     - name: hello-hello-hello
