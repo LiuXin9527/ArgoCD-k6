@@ -3,9 +3,9 @@ kind: Workflow
 metadata:
   name: steps
   generateName: steps
-#  annotations:
-#    argocd.argoproj.io/hook: PostSync
-#    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   entrypoint: whalesay          # invoke the whalesay template
   templates:
