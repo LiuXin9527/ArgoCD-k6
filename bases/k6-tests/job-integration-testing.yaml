@@ -12,7 +12,7 @@ spec:
         - name: wait-2m
           image: alpine:latest
           imagePullPolicy: IfNotPresent
-          command: [ "sleep", "1" ]
+          command: [ "sleep", "2" ]
       containers:
         - name: k6-test-merchant-apis
           image: loadimpact/k6
