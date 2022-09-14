@@ -18,3 +18,5 @@ configMapGenerator:
       - test-payment-fee-apis.js
       - test-settlement-policy-apis.js
       - upload-report.js
+      - aws.min.js.map
+      - aws.min.js
