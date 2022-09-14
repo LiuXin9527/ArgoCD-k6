@@ -19,6 +19,7 @@ spec:
 #            template: whalesay2
     - name: k6-test-merchant-apis
       container:
+      - name: k6-test-merchant-apis
         image: loadimpact/k6
         imagePullPolicy: IfNotPresent
         args:
