@@ -1,36 +1,62 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
-  name: dag-diamond
+  name: hello-world-
+  generateName: dag-diamond-
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   entrypoint: diamond
   templates:
-    - name: echo
-      inputs:
-        parameters:
-          - name: message
-      container:
-        image: alpine:3.7
-        command: [echo, "{{inputs.parameters.message}}"]
     - name: diamond
       dag:
         tasks:
-          - name: A
-            template: echo
-            arguments:
-              parameters: [{name: message, value: A}]
+          - name: wait-sync
+            suspend:
+              duration: 5s
           - name: B
-            dependencies: [A]
-            template: echo
-            arguments:
-              parameters: [{name: message, value: B}]
+            dependencies: [wait-sync]
+            template: k6-test-info-apis
           - name: C
-            dependencies: [A]
-            template: echo
-            arguments:
-              parameters: [{name: message, value: C}]
+            dependencies: [wait-sync]
+            template: k6-test-info-apis
           - name: D
-            dependencies: [B, C]
-            template: echo
-            arguments:
-              parameters: [{name: message, value: D}]
+            dependencies: [wait-sync]
+            template: k6-test-info-apis
+    - name: k6-test-merchant-apis
+      container:
+        image: loadimpact/k6
+        imagePullPolicy: IfNotPresent
+        args:
+          - run
+          #          - -eHOST=https://lcp-settle-api.line-apps-beta.com
+          - /k6-scripts/test-merchant-apis.js
+        volumeMounts:
+          - name: k6-scripts
+            mountPath: /k6-scripts
+      volumes:
+        - name: k6-scripts
+          configMap:
+            name: k6-scripts
+            items:
+              - key: 'test-merchant-apis.js'
+                path: 'test-merchant-apis.js'
+    - name: k6-test-info-apis
+      container:
+        image: loadimpact/k6
+        imagePullPolicy: IfNotPresent
+        args:
+          - run
+          #          - -eHOST=https://lcp-settle-api.line-apps-beta.com
+          - /k6-scripts/test-info-apis.js
+        volumeMounts:
+          - name: k6-scripts
+            mountPath: /k6-scripts
+      volumes:
+        - name: k6-scripts
+          configMap:
+            name: k6-scripts
+            items:
+              - key: 'test-info-apis.js'
+                path: 'test-info-apis.js'
