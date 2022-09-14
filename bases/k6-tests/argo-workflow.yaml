@@ -3,9 +3,9 @@ kind: Workflow
 metadata:
   name: hello-world
   generateName: hello-world
-#  annotations:
-#    argocd.argoproj.io/hook: PostSync
-#    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
 
 spec:
   entrypoint: whalesay
@@ -29,6 +29,7 @@ spec:
         imagePullPolicy: IfNotPresent
         args:
           - run
+          - -eHOST=https://lcp-settle-api.line-apps-beta.com
           - /k6-scripts/test-merchant-apis.js
         volumeMounts:
           - name: k6-scripts
@@ -46,6 +47,7 @@ spec:
         imagePullPolicy: IfNotPresent
         args:
           - run
+          - -eHOST=https://lcp-settle-api.line-apps-beta.com
           - /k6-scripts/test-info-apis.js
         volumeMounts:
           - name: k6-scripts
