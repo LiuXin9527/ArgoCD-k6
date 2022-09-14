@@ -12,8 +12,9 @@ spec:
       dag:
         tasks:
           - name: wait-sync
-            suspend:
-              duration: 5s
+            template:
+              suspend:
+                duration: 5s
           - name: B
             dependencies: [wait-sync]
             template: k6-test-info-apis
