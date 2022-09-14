@@ -21,7 +21,9 @@ spec:
       container:
         image: loadimpact/k6
         imagePullPolicy: IfNotPresent
-        args: [ "run /k6-scripts/test-merchant-apis.js" ]
+        args:
+          - run
+          - /k6-scripts/test-merchant-apis.js
         volumeMounts:
           - name: k6-scripts
             mountPath: /k6-scripts
