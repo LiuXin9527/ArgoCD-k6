@@ -22,6 +22,9 @@ spec:
           - name: D
             dependencies: [wait-sync]
             template: k6-test-info-apis
+          - name: E
+            dependencies: [B, C, D]
+            template: k6-test-info-apis
 
     - name: wait-sync
       suspend:
