@@ -9,7 +9,7 @@ metadata:
 spec:
   entrypoint: whalesay
   templates:
-    - name: whalesay1
+    - name: whalesay
       container:
         image: alpine:3.16
         command: [ "sleep", "10" ]
