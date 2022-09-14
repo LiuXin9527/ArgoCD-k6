@@ -6,6 +6,7 @@ resources:
 #  - argo-role.yaml
   - pre-sync-job.yaml
   - argo-workflow.yaml
+  - git::https://git.linecorp.com/tw-sre/serve-common.git//configurations/?ref=1.1.2
 
 #configMapGenerator:
 #  - name: k6-scripts

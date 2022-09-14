@@ -36,6 +36,6 @@ spec:
         parameters:
           - name: message
       container:
-        image: alpine:latest
-        command: ["sleep", "10"]
+        image: docker/whalesay
+        command: [cowsay]
         args: ["{{inputs.parameters.message}}"]
