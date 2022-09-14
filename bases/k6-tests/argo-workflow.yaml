@@ -3,19 +3,19 @@ kind: Workflow
 metadata:
   name: hello-world
   generateName: hello-world
-  annotations:
-    argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+#  annotations:
+#    argocd.argoproj.io/hook: PostSync
+#    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   entrypoint: whalesay
   templates:
     - name: whalesay
       steps:
-        - - name: hello1
+        - - name: hello1            # hello1 is run before the following steps
             template: whalesay2
-        - - name: hello2
+        - - name: hello2           # hello1 is run before the following steps
             template: whalesay2
-        - - name: hello3
+        - - name: hello3           # hello1 is run before the following steps
             template: whalesay2
     - name: whalesay2
       container:
