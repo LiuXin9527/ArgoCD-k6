@@ -110,3 +110,7 @@ spec:
             items:
               - key: 'upload-report.js'
                 path: 'upload-report.js'
+              - key: 'aws.min.js.map'
+                path: 'aws.min.js.map'
+              - key: 'aws.min.js'
+                path: 'aws.min.js'
