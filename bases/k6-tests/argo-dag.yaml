@@ -11,7 +11,7 @@ spec:
     - name: diamond
       dag:
         tasks:
-          - name: A
+          - name: wait-sync
             template: wait-sync
           - name: B
             dependencies: [wait-sync]
@@ -22,6 +22,7 @@ spec:
           - name: D
             dependencies: [wait-sync]
             template: k6-test-info-apis
+
     - name: wait-sync
       suspend:
         duration: "5"    # Must be a string. Default unit is seconds. Could also be a Duration, e.g.: "2m", "6h", "1d"
