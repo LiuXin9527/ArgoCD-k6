@@ -1,35 +1,41 @@
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
 metadata:
-  name: workflow-role
-rules:
-  # pod get/watch is used to identify the container IDs of the current pod
-  # pod patch is used to annotate the step's outputs back to controller (e.g. artifact location)
-  - apiGroups:
-      - ""
-    resources:
-      - pods
-    verbs:
-      - get
-      - watch
-      - patch
-  # logs get/watch are used to get the pods logs for script outputs, and for log archival
-  - apiGroups:
-      - ""
-    resources:
-      - pods/log
-    verbs:
-      - get
-      - watch
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: workflow-role-binding
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: workflow-role
-subjects:
-  - kind: ServiceAccount
-    name: default
+  name: steps
+spec:
+  entrypoint: hello-hello-hello
+
+  # This spec contains two templates: hello-hello-hello and whalesay
+  templates:
+    - name: hello-hello-hello
+      # Instead of just running a container
+      # This template has a sequence of steps
+      steps:
+        - - name: hello1            # hello1 is run before the following steps
+            template: whalesay
+            arguments:
+              parameters:
+                - name: message
+                  value: "hello1"
+        - - name: hello2a           # double dash => run after previous step
+            template: whalesay
+            arguments:
+              parameters:
+                - name: message
+                  value: "hello2a"
+          - name: hello2b           # single dash => run in parallel with previous step
+            template: whalesay
+            arguments:
+              parameters:
+                - name: message
+                  value: "hello2b"
+
+    # This is the same template as from the previous example
+    - name: whalesay
+      inputs:
+        parameters:
+          - name: message
+      container:
+        image: docker/whalesay
+        command: [cowsay]
+        args: ["{{inputs.parameters.message}}"]
