@@ -16,12 +16,21 @@ spec:
           - name: B
             dependencies: [wait-sync]
             template: k6-test-info-apis
+            continueOn:
+              failed: true
+              error: true
           - name: C
             dependencies: [wait-sync]
             template: k6-test-info-apis
+            continueOn:
+              failed: true
+              error: true
           - name: D
             dependencies: [wait-sync]
             template: k6-test-info-apis
+            continueOn:
+              failed: true
+              error: true
           - name: E
             dependencies: [B, C, D]
             template: k6-test-info-apis
