@@ -8,8 +8,8 @@ resources:
   - argo-workflow.yaml
 #  - argo-dag.yaml
 
-configMapGenerator:
-  - name: k6-scripts
-    files:
-      - test-merchant-apis.js
-      - test-info-apis.js
+#configMapGenerator:
+#  - name: k6-scripts
+#    files:
+#      - test-merchant-apis.js
+#      - test-info-apis.js

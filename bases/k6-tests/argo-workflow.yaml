@@ -6,6 +6,12 @@ metadata:
   annotations:
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
+
+configMapGenerator:
+  - name: k6-scripts
+    files:
+      - test-merchant-apis.js
+      - test-info-apis.js
 spec:
   entrypoint: whalesay
   templates:
