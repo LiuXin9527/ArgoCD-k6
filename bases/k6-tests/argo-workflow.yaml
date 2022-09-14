@@ -16,6 +16,7 @@ spec:
         imagePullPolicy: IfNotPresent
         args:
           - run
+          - -e HOST="https://lcp-settle-api.line-apps-beta.com"
           - /k6-scripts/test-merchant-apis.js
         volumeMounts:
           - name: k6-scripts
