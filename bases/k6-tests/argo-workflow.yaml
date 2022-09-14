@@ -1,23 +1,31 @@
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
-  name: workflow-template-submittable
+  name: hello-world-template-global-arg
 spec:
-  entrypoint: hello           # We reference our first "template" here
-
+  serviceAccountName: argo
   templates:
-    - name: hello               # The first "template" in this Workflow, it is referenced by "entrypoint"
-      steps:                    # The type of this "template" is "steps"
-        - - name: hello
-            template: whalesay    # We reference our second "template" here
-            arguments:
-              parameters: [{name: message, value: "hello1"}]
-
-    - name: whalesay             # The second "template" in this Workflow, it is referenced by "hello"
-      inputs:
-        parameters:
-          - name: message
-      container:                # The type of this "template" is "container"
+    - name: hello-world
+      container:
         image: docker/whalesay
         command: [cowsay]
-        args: ["{{inputs.parameters.message}}"]
+        args: ["{{workflow.parameters.global-parameter}}"]
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: hello-world-wf-global-arg-
+spec:
+  serviceAccountName: argo
+  entrypoint: whalesay
+  arguments:
+    parameters:
+      - name: global-parameter
+        value: hello
+  templates:
+    - name: whalesay
+      steps:
+        - - name: hello-world
+            templateRef:
+              name: hello-world-template-global-arg
+              template: hello-world
