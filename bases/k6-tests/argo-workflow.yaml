@@ -27,12 +27,12 @@ spec:
         imagePullPolicy: IfNotPresent
         args:
           - run
-          - /test-merchant-apis.js
+          - /k6-scripts/test-merchant-apis.js
         volumeMounts:
-          - name: k6-scripts
+          - name: k6-scripts1
             mountPath: /k6-scripts
       volumes:
-        - name: k6-scripts
+        - name: k6-scripts1
           configMap:
             name: k6-scripts
             items:
