@@ -13,22 +13,10 @@ spec:
       steps:
         - - name: hello1            # hello1 is run before the following steps
             template: whalesay
-            arguments:
-              parameters:
-                - name: message
-                  value: "hello1"
         - - name: hello2a           # double dash => run after previous step
             template: whalesay
-            arguments:
-              parameters:
-                - name: message
-                  value: "hello2a"
           - name: hello2b           # single dash => run in parallel with previous step
             template: whalesay
-            arguments:
-              parameters:
-                - name: message
-                  value: "hello2b"
 
     # This is the same template as from the previous example
     - name: whalesay
@@ -36,6 +24,5 @@ spec:
         parameters:
           - name: message
       container:
-        image: docker/whalesay
-        command: [cowsay]
-        args: ["{{inputs.parameters.message}}"]
+        image: alpine:latest
+        command: ["sleep", "10"]
