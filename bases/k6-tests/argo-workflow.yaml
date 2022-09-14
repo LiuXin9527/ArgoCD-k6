@@ -3,17 +3,21 @@ kind: WorkflowTemplate
 metadata:
   name: workflow-template-submittable
 spec:
-  entrypoint: whalesay-template     # Fields other than "arguments" and "templates" not supported in v2.4 - v2.6
-  arguments:
-    parameters:
-      - name: message
-        value: hello world
+  entrypoint: hello           # We reference our first "template" here
+
   templates:
-    - name: whalesay-template
+    - name: hello               # The first "template" in this Workflow, it is referenced by "entrypoint"
+      steps:                    # The type of this "template" is "steps"
+        - - name: hello
+            template: whalesay    # We reference our second "template" here
+            arguments:
+              parameters: [{name: message, value: "hello1"}]
+
+    - name: whalesay             # The second "template" in this Workflow, it is referenced by "hello"
       inputs:
         parameters:
           - name: message
-      container:
+      container:                # The type of this "template" is "container"
         image: docker/whalesay
         command: [cowsay]
         args: ["{{inputs.parameters.message}}"]
