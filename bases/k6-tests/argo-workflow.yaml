@@ -12,14 +12,15 @@ spec:
   templates:
     - name: whalesay
       steps:
-        - - name: hello1            # hello1 is run before the following steps
-            template: k6-test-merchant-apis
-          - name: hello2           # hello1 is run before the following steps
-            template: k6-test-info-apis
-          - name: hello3           # hello1 is run before the following steps
-            template: k6-test-info-apis
-        - - name: hello4            # hello1 is run before the following steps
-            template: k6-test-merchant-apis
+      - - name: hello1            # hello1 is run before the following steps
+          template: k6-test-merchant-apis
+        - name: hello2           # hello1 is run before the following steps
+          template: k6-test-info-apis
+        - name: hello3           # hello1 is run before the following steps
+          template: k6-test-info-apis
+      - - name: hello4            # hello1 is run before the following steps
+          template: k6-test-merchant-apis
+
     - name: k6-test-merchant-apis
       containers:
         image: loadimpact/k6
