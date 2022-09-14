@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
 #  - job-integration-testing.yaml
   - argo-role.yaml
-  - pre-sync-job.yaml
+#  - pre-sync-job.yaml
   - argo-workflow.yaml
 
 #configMapGenerator:
