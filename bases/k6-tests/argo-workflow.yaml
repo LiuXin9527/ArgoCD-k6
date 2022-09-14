@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
-  name: hello-world
+  name: hello-world-
   generateName: hello-world
   annotations:
     argocd.argoproj.io/hook: PostSync
@@ -11,11 +11,11 @@ spec:
   templates:
     - name: whalesay
       steps:
-        - - name: hello1            # hello1 is run before the following steps
+        - - name: hello1
             template: whalesay2
-        - - name: hello2           # hello1 is run before the following steps
+        - - name: hello2
             template: whalesay2
-        - - name: hello3           # hello1 is run before the following steps
+        - - name: hello3
             template: whalesay2
     - name: whalesay2
       container:
