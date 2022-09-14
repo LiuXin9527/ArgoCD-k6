@@ -12,12 +12,12 @@ spec:
     - name: whalesay
       steps:
         - - name: hello1            # hello1 is run before the following steps
-            template: k6-test-merchant-apis
+            template: k6
 #        - - name: hello2           # hello1 is run before the following steps
 #            template: k6-test-info-apis
 #        - - name: hello3           # hello1 is run before the following steps
 #            template: whalesay2
-    - name: k6-test-merchant-apis
+    - name: k6
       containers:
           image: loadimpact/k6
 #          imagePullPolicy: IfNotPresent
