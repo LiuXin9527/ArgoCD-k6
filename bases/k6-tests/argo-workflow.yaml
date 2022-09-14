@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
   name: hello-world
+  generateName: hello-world
   annotations:
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
@@ -9,9 +10,16 @@ spec:
   entrypoint: whalesay
   templates:
     - name: whalesay
-      container:
-        image: alpine:3.16
-        command: [ "sleep", "10" ]
+      steps:
+        - - name: hello1            # hello1 is run before the following steps
+            container:
+              image: alpine:3.16
+              command: [ "sleep", "10" ]
+        - - name: hello2           # hello1 is run before the following steps
+            container:
+              image: alpine:3.16
+              command: [ "sleep", "10" ]
+
 #        resources:
 #          limits:
 #            memory: 32Mi
