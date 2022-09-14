@@ -17,9 +17,9 @@ spec:
         args:
           - run
           - /k6-scripts/test-merchant-apis.js
-#        volumeMounts:
-#          - name: k6-scripts
-#            mountPath: /k6-scripts
+        volumeMounts:
+          - name: k6-scripts
+            mountPath: /k6-scripts
       volumes:
         - name: k6-scripts
           path: /k6-scripts
