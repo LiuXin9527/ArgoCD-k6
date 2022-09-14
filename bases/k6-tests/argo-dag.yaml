@@ -56,6 +56,7 @@ spec:
           - run
           #          - -eHOST=https://lcp-settle-api.line-apps-beta.com
           - /k6-scripts/test-info-apis.js
+          - exit 1
         volumeMounts:
           - name: k6-scripts
             mountPath: /k6-scripts
