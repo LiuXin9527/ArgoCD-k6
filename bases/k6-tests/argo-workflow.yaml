@@ -8,19 +8,7 @@ metadata:
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   entrypoint: whalesay
-  volumes:
-    - name: workdir
-      persistentVolumeClaim:
-        claimName: k6-scripts
   templates:
-    - name: whalesay
-      steps:
-        - - name: hello1            # hello1 is run before the following steps
-            template: k6-test-merchant-apis
-#        - - name: hello2           # hello1 is run before the following steps
-#            template: k6-test-info-apis
-#        - - name: hello3           # hello1 is run before the following steps
-#            template: whalesay2
     - name: k6-test-merchant-apis
       container:
         image: loadimpact/k6
@@ -38,6 +26,15 @@ spec:
             items:
               - key: 'test-merchant-apis.js'
                 path: 'test-merchant-apis.js'
+    - name: whalesay
+      steps:
+        - - name: hello1            # hello1 is run before the following steps
+            template: k6-test-merchant-apis
+#        - - name: hello2           # hello1 is run before the following steps
+#            template: k6-test-info-apis
+#        - - name: hello3           # hello1 is run before the following steps
+#            template: whalesay2
+
 #    - name: k6-test-merchant-apis
 #      containers:
 #        image: loadimpact/k6
