@@ -27,7 +27,7 @@ spec:
               error: true
           - name: k6-settlement-policy
             dependencies: [wait-sync]
-            template: k6-test-info-apis
+            template: k6-settlement-policy
             continueOn:
               failed: true
               error: true
