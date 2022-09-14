@@ -17,14 +17,10 @@ spec:
             template: whalesay2
         - - name: hello3           # hello1 is run before the following steps
             template: whalesay2
-    - name: whalesay1
-      steps:
-        - - name: hello4            # hello1 is run before the following steps
-            template: whalesay2
     - name: whalesay2
       container:
         image: alpine:3.16
-        command: [ "sleep", "10" ]
+        command: [ "sleep", "5" ]
 #        resources:
 #          limits:
 #            memory: 32Mi
