@@ -5,6 +5,7 @@ resources:
 #  - job-integration-testing.yaml
 #  - argo-role.yaml
 #  - pre-sync-job.yaml
+  - workflow-map.yaml
   - argo-workflow.yaml
 #  - argo-dag.yaml
 

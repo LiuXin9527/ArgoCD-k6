@@ -1,0 +1,447 @@
+nameReference:
+  - kind: ConfigMap
+    version: v1
+    fieldSpecs:
+      - group: argoproj.io
+        version: v1alpha1
+        kind: Workflow
+        path: spec/arguments/artifacts/hdfs/krbConfigConfigMap/name
+      - group: argoproj.io
+        version: v1alpha1
+        kind: Workflow
+        path: spec/templates/arguments/parameters/valueFrom/configMapKeyRef/name
+      - group: argoproj.io
+        version: v1alpha1
+        kind: Workflow
+        path: spec/templates/artifactRepositoryRef/configMap
+      - group: argoproj.io
+        version: v1alpha1
+        kind: Workflow
+        path: spec/templates/synchronization/semaphore/configMapKeyRef/name
+      - group: argoproj.io
+        version: v1alpha1
+        kind: Workflow
+        path: spec/templates/volumes/configMap/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/initContainers/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/container/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/containerSet/containers/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/script/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/sidecars/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/steps/inline/initContainers/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/steps/inline/container/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/steps/inline/containerSet/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/steps/inline/script/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/steps/inline/sidecars/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/dag/tasks/inline/initContainers/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/dag/tasks/inline/container/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/dag/tasks/inline/containerSet/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/dag/tasks/inline/script/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/dag/tasks/inline/sidecars/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/initContainers/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/container/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/containerSet/containers/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/script/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/sidecars/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/steps/inline/initContainers/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/steps/inline/container/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/steps/inline/containerSet/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/steps/inline/script/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/steps/inline/sidecars/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/dag/tasks/inline/initContainers/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/dag/tasks/inline/container/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/dag/tasks/inline/containerSet/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/dag/tasks/inline/script/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/dag/tasks/inline/sidecars/envFrom/configMapRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/initContainers/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/container/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/containerSet/containers/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/script/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/sidecars/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/steps/inline/initContainers/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/steps/inline/container/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/steps/inline/containerSet/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/steps/inline/script/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/steps/inline/sidecars/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/dag/tasks/inline/initContainers/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/dag/tasks/inline/container/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/dag/tasks/inline/containerSet/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/dag/tasks/inline/script/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/dag/tasks/inline/sidecars/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/initContainers/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/container/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/containerSet/containers/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/script/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/sidecars/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/steps/inline/initContainers/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/steps/inline/container/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/steps/inline/containerSet/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/steps/inline/script/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/steps/inline/sidecars/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/dag/tasks/inline/initContainers/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/dag/tasks/inline/container/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/dag/tasks/inline/containerSet/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/dag/tasks/inline/script/env/valueFrom/configMapKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/dag/tasks/inline/sidecars/env/valueFrom/configMapKeyRef/name
+  - kind: Secret
+    version: v1
+    fieldSpecs:
+      - group: argoproj.io
+        version: v1alpha1
+        kind: Workflow
+        path: spec/arguments/artifacts/artifactory/usernameSecret/name
+      - group: argoproj.io
+        version: v1alpha1
+        kind: Workflow
+        path: spec/arguments/artifacts/artifactory/passwordSecret/name
+      - group: argoproj.io
+        version: v1alpha1
+        kind: Workflow
+        path: spec/arguments/artifacts/gcs/serviceAccountKeySecret/name
+      - group: argoproj.io
+        version: v1alpha1
+        kind: Workflow
+        path: spec/arguments/artifacts/git/usernameSecret/name
+      - group: argoproj.io
+        version: v1alpha1
+        kind: Workflow
+        path: spec/arguments/artifacts/git/passwordSecret/name
+      - group: argoproj.io
+        version: v1alpha1
+        kind: Workflow
+        path: spec/arguments/artifacts/git/sshPrivateKeySecret/name
+      - group: argoproj.io
+        version: v1alpha1
+        kind: Workflow
+        path: spec/arguments/artifacts/hdfs/krbCCacheSecret/name
+      - group: argoproj.io
+        version: v1alpha1
+        kind: Workflow
+        path: spec/arguments/artifacts/hdfs/krbKeytabSecret/name
+      - group: argoproj.io
+        version: v1alpha1
+        kind: Workflow
+        path: spec/arguments/artifacts/oss/accessKeySecret/name
+      - group: argoproj.io
+        version: v1alpha1
+        kind: Workflow
+        path: spec/arguments/artifacts/oss/secretKeySecret/name
+      - group: argoproj.io
+        version: v1alpha1
+        kind: Workflow
+        path: spec/arguments/artifacts/s3/accessKeySecret/name
+      - group: argoproj.io
+        version: v1alpha1
+        kind: Workflow
+        path: spec/arguments/artifacts/s3/secretKeySecret/name
+      - group: argoproj.io
+        version: v1alpha1
+        kind: Workflow
+        path: spec/arguments/artifacts/s3/encryptionOptions/serverSideCustomerKeySecret/name
+      - group: argoproj.io
+        version: v1alpha1
+        kind: Workflow
+        path: spec/templates/imagePullSecrets/name
+      - group: argoproj.io
+        version: v1alpha1
+        kind: Workflow
+        path: spec/templates/volumes/secret/secretName
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/initContainers/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/container/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/containerSet/containers/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/script/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/sidecars/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/steps/inline/initContainers/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/steps/inline/container/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/steps/inline/containerSet/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/steps/inline/script/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/steps/inline/sidecars/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/dag/tasks/inline/initContainers/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/dag/tasks/inline/container/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/dag/tasks/inline/containerSet/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/dag/tasks/inline/script/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/dag/tasks/inline/sidecars/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/initContainers/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/container/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/containerSet/containers/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/script/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/sidecars/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/steps/inline/initContainers/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/steps/inline/container/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/steps/inline/containerSet/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/steps/inline/script/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/steps/inline/sidecars/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/dag/tasks/inline/initContainers/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/dag/tasks/inline/container/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/dag/tasks/inline/containerSet/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/dag/tasks/inline/script/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/dag/tasks/inline/sidecars/envFrom/secretRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/initContainers/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/container/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/containerSet/containers/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/script/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/sidecars/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/steps/inline/initContainers/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/steps/inline/container/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/steps/inline/containerSet/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/steps/inline/script/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/steps/inline/sidecars/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/dag/tasks/inline/initContainers/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/dag/tasks/inline/container/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/dag/tasks/inline/containerSet/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/dag/tasks/inline/script/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templates/dag/tasks/inline/sidecars/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/initContainers/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/container/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/containerSet/containers/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/script/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/sidecars/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/steps/inline/initContainers/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/steps/inline/container/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/steps/inline/containerSet/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/steps/inline/script/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/steps/inline/sidecars/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/dag/tasks/inline/initContainers/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/dag/tasks/inline/container/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/dag/tasks/inline/containerSet/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/dag/tasks/inline/script/env/valueFrom/secretKeyRef/name
+      - apiVersion: argoproj.io/v1alpha1
+        kind: Workflow
+        path: spec/templateDefaults/dag/tasks/inline/sidecars/env/valueFrom/secretKeyRef/name
