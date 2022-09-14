@@ -3,7 +3,7 @@ kind: WorkflowTemplate
 metadata:
   name: hello-world-template-global-arg
 spec:
-  serviceAccountName: argo
+  serviceAccountName: admin
   templates:
     - name: hello-world
       container:
@@ -17,7 +17,7 @@ metadata:
   generateName: hello-world-wf-global-arg
   name: hello
 spec:
-  serviceAccountName: argo
+  serviceAccountName: admin
   entrypoint: whalesay
   arguments:
     parameters:
