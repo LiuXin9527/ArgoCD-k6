@@ -10,9 +10,10 @@ spec:
   entrypoint: whalesay
   templates:
     - name: whalesay
-      container:
-        image: alpine:3.16
-        command: [ "sleep", "10" ]
+      steps:
+        steps:
+          - - name: hello1            # hello1 is run before the following steps
+              template: whalesay2
     - name: whalesay2
       container:
         image: alpine:3.16
