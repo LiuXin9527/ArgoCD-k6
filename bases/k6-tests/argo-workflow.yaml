@@ -13,10 +13,10 @@ spec:
       container:
         image: alpine:3.16
         command: [ "sleep", "10" ]
-#    - name: whalesay2
-#      container:
-#        image: alpine:3.16
-#        command: [ "sleep", "10" ]
+    - name: whalesay2
+      container:
+        image: alpine:3.16
+        command: [ "sleep", "10" ]
 #        resources:
 #          limits:
 #            memory: 32Mi
