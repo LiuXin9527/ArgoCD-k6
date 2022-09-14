@@ -9,17 +9,14 @@ metadata:
 spec:
   entrypoint: whalesay
   templates:
-    - name: whalesay
-      steps:
-        - - name: hello1            # hello1 is run before the following steps
-            container:
-              image: alpine:3.16
-              command: [ "sleep", "10" ]
-        - - name: hello2           # hello1 is run before the following steps
-            container:
-              image: alpine:3.16
-              command: [ "sleep", "10" ]
-
+    - name: whalesay1
+      container:
+        image: alpine:3.16
+        command: [ "sleep", "10" ]
+    - name: whalesay2
+      container:
+        image: alpine:3.16
+        command: [ "sleep", "10" ]
 #        resources:
 #          limits:
 #            memory: 32Mi
