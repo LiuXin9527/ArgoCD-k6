@@ -20,9 +20,6 @@ spec:
 
     # This is the same template as from the previous example
     - name: whalesay
-      inputs:
-        parameters:
-          - name: message
       container:
         image: alpine:latest
         command: ["sleep", "10"]
