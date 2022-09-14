@@ -15,4 +15,6 @@ configMapGenerator:
   - name: k6-scripts
     files:
       - test-merchant-apis.js
-      - test-info-apis.js
+      - test-payment-fee-apis.js
+      - test-settlement-policy-apis.js
+      - upload-report.js
