@@ -1,20 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
-  name: steps
-  generateName: steps
-#  annotations:
-#    argocd.argoproj.io/hook: PostSync
-#    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+  generateName: steps-
 spec:
-  entrypoint: whalesay          # invoke the whalesay template
+  entrypoint: hello           # We reference our first "template" here
+
   templates:
-    - name: whalesay              # name of the template
-      container:
+    - name: hello               # The first "template" in this Workflow, it is referenced by "entrypoint"
+      steps:                    # The type of this "template" is "steps"
+        - - name: hello
+            template: whalesay    # We reference our second "template" here
+            arguments:
+              parameters: [{name: message, value: "hello1"}]
+
+    - name: whalesay             # The second "template" in this Workflow, it is referenced by "hello"
+      inputs:
+        parameters:
+          - name: message
+      container:                # The type of this "template" is "container"
         image: docker/whalesay
-        command: [ cowsay ]
-        args: [ "hello world" ]
-        resources: # limit the resources
-          limits:
-            memory: 32Mi
-            cpu: 100m
+        command: [cowsay]
+        args: ["{{inputs.parameters.message}}"]
