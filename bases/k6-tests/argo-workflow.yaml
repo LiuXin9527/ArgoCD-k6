@@ -1,32 +1,35 @@
-apiVersion: argoproj.io/v1alpha1
-kind: WorkflowTemplate
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
 metadata:
-  name: hello-world-template-global-arg
-spec:
-  serviceAccountName: admin
-  templates:
-    - name: hello-world
-      container:
-        image: docker/whalesay
-        command: [cowsay]
-        args: ["{{workflow.parameters.global-parameter}}"]
+  name: workflow-role
+rules:
+  # pod get/watch is used to identify the container IDs of the current pod
+  # pod patch is used to annotate the step's outputs back to controller (e.g. artifact location)
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+    verbs:
+      - get
+      - watch
+      - patch
+  # logs get/watch are used to get the pods logs for script outputs, and for log archival
+  - apiGroups:
+      - ""
+    resources:
+      - pods/log
+    verbs:
+      - get
+      - watch
 ---
-apiVersion: argoproj.io/v1alpha1
-kind: Workflow
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
 metadata:
-  generateName: hello-world-wf-global-arg
-  name: hello
-spec:
-  serviceAccountName: admin
-  entrypoint: whalesay
-  arguments:
-    parameters:
-      - name: global-parameter
-        value: hello
-  templates:
-    - name: whalesay
-      steps:
-        - - name: hello-world
-            templateRef:
-              name: hello-world-template-global-arg
-              template: hello-world
+  name: workflow-role-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: workflow-role
+subjects:
+  - kind: ServiceAccount
+    name: default
