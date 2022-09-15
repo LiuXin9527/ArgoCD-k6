@@ -114,3 +114,5 @@ spec:
                 path: 'aws.min.js.map'
               - key: 'aws.min.js'
                 path: 'aws.min.js'
+              - key: 'lcp-merchant-report.html'
+                path: 'lcp-merchant-report.html'

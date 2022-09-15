@@ -20,3 +20,4 @@ configMapGenerator:
       - upload-report.js
       - aws.min.js.map
       - aws.min.js
+      - lcp-merchant-report.html
