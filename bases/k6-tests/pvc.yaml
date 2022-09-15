@@ -1,39 +1,43 @@
-apiVersion: v1
-kind: Pod
+apiVersion: serving.knative.dev/v1
+kind: Service
 metadata:
   name: vol1
 spec:
-  containers:
-    - image: loadimpact/k6
-      name: vm1
-#      command: ["sleep", "10m"]
-      args:
-        - run
-        - /k6-scripts/html/test-merchant-apis.js
-      volumeMounts:
-        - mountPath: /k6-scripts
-          name: cache-volume
-        - mountPath: /k6-scripts/html/test-merchant-apis.js
-          name: k6-scripts
-          subPath: test-merchant-apis.js
-    - name: vm2
-      image: nginx
-      volumeMounts:
-        - mountPath: /k6-scripts
-          name: cache-volume
-#      volumeMounts:
-#        - mountPath: /
-#          name: k6-scripts
-#          subPath: k6-scripts
-  volumes:
-    - name: cache-volume
-      emptyDir: {}
-    - name: k6-scripts
-      configMap:
-        name: k6-scripts
-        items:
-          - key: 'test-merchant-apis.js'
-            path: 'test-merchant-apis.js'
+  template:
+    spec:
+      containers:
+        - image: loadimpact/k6
+          name: vm1
+      #      command: ["sleep", "10m"]
+          args:
+            - run
+            - /k6-scripts/html/test-merchant-apis.js
+          volumeMounts:
+            - mountPath: /k6-scripts
+              name: cache-volume
+            - mountPath: /k6-scripts/html/test-merchant-apis.js
+              name: k6-scripts
+              subPath: test-merchant-apis.js
+        - name: vm2
+          image: nginx
+          volumeMounts:
+            - mountPath: /k6-scripts
+              name: cache-volume
+      #      volumeMounts:
+      #        - mountPath: /
+      #          name: k6-scripts
+      #          subPath: k6-scripts
+      volumes:
+        - name: cache-volume
+          emptyDir: {}
+        - name: k6-scripts
+          configMap:
+            name: k6-scripts
+            items:
+              - key: 'test-merchant-apis.js'
+                path: 'test-merchant-apis.js'
+      restartPolicy: Never
+  backoffLimit: 0
 #  volumes:
 #    - name: cache-volume
 #      emptyDir:
