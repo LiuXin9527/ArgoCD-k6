@@ -4,9 +4,8 @@ metadata:
   name: vol1
 spec:
   containers:
-    - image: busyboxplus
+    - image: nginx
       name: vm1
-      command: ["sleep", "300"]
       volumeMounts:
         - mountPath: /cache
           name: cache-volume
