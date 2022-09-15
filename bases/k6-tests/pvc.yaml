@@ -14,9 +14,9 @@ spec:
         - mountPath: /k6-scripts
           name: cache-volume
           subPath: k6-scripts
-        - mountPath: /k6-scripts/lcp-merchant-report.js
+        - mountPath: /k6-scripts/test-merchant-apis.js
           name: k6-scripts
-          subPath: lcp-merchant-report.js
+          subPath: test-merchant-apis.js
     - name: vm2
       image: nginx
       volumeMounts:
