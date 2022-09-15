@@ -6,14 +6,17 @@ spec:
   containers:
     - image: alpine:3.16
       name: vm1
-      command: ["sleep", "1m"]
+      command:
+        - sh
+        - '-c'
+        - 'cp /k6-scripts/html /k6-scripts'
 #      args:
 #        - run
 #        - /k6-scripts/html/test-merchant-apis.js
       volumeMounts:
-#        - mountPath: /k6-scripts
-#          name: cache-volume
         - mountPath: /k6-scripts
+          name: cache-volume
+        - mountPath: /k6-scripts/html
           name: k6-scripts
 #          subPath: k6-scripts
     - name: vm2
