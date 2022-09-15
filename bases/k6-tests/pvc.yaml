@@ -1,5 +1,5 @@
-apiVersion: serving.knative.dev/v1
-kind: Service
+apiVersion: batch/v1
+kind: pod
 metadata:
   name: vol1
 spec:
