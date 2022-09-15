@@ -49,8 +49,6 @@ spec:
         items:
           - key: 'test-merchant-apis.js'
             path: 'test-merchant-apis.js'
-          - key: 'k6'
-            path: 'k6'
   restartPolicy: Never
 #  backoffLimit: 0
 
