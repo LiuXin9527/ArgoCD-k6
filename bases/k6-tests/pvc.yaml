@@ -13,7 +13,7 @@ spec:
       volumeMounts:
         - mountPath: /k6-scripts
           name: cache-volume
-        - mountPath: /k6-scripts
+        - mountPath: /k6-scripts/html
           name: k6-scripts
 #          subPath: k6-scripts
     - name: vm2
@@ -24,7 +24,6 @@ spec:
       volumeMounts:
         - mountPath: /k6-scripts
           name: cache-volume
-
   volumes:
     - name: cache-volume
       persistentVolumeClaim:
@@ -52,3 +51,16 @@ spec:
   resources:
     requests:
       storage: 1Gi
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: my-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /k6-scripts
