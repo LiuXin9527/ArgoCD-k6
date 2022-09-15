@@ -15,7 +15,7 @@ spec:
           name: cache-volume
         - mountPath: /k6-scripts/test-merchant-apis.js
           name: k6-scripts
-          subPath: k6-scripts/test-merchant-apis.js
+          subPath: test-merchant-apis.js
 #        - mountPath: /k6-scripts/html
 #          name: k6-scripts
 #          subPath: html
