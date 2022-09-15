@@ -9,14 +9,14 @@ spec:
       command:
         - sh
         - '-c'
-        - 'cp /k6-scripts/html /k6-scripts'
+        - 'cp /k6-scripts1/html /k6-scripts'
 #      args:
 #        - run
 #        - /k6-scripts/html/test-merchant-apis.js
       volumeMounts:
         - mountPath: /k6-scripts
           name: cache-volume
-        - mountPath: /k6-scripts/html
+        - mountPath: /k6-scripts1/html
           name: k6-scripts
 #          subPath: k6-scripts
     - name: vm2
