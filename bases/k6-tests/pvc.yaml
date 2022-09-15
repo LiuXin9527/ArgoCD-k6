@@ -1,48 +1,46 @@
-apiVersion: batch/v1
-kind: Job
+apiVersion: v1
+kind: pod
 metadata:
   name: vol1
 spec:
-  template:
-    spec:
-      containers:
-        - image: loadimpact/k6
-          name: vm1
+  containers:
+    - image: loadimpact/k6
+      name: vm1
       #      command: ["sleep", "10m"]
-          args:
-            - run
-            - /k6-scripts/html/test-merchant-apis.js
-          volumeMounts:
-            - mountPath: /k6-scripts
-              name: cache-volume
-            - mountPath: /k6-scripts/html/test-merchant-apis.js
-              name: k6-scripts
-              subPath: test-merchant-apis.js
-        - name: vm2
-          image: nginx
-          volumeMounts:
-            - mountPath: /k6-scripts
-              name: cache-volume
-      #      volumeMounts:
-      #        - mountPath: /
-      #          name: k6-scripts
-      #          subPath: k6-scripts
-      volumes:
-        - name: cache-volume
-          hostPath:
-            # 宿主上目录位置
-            path: /data
-            # 此字段为可选
-            type: DirectoryOrCreate
-#          emptyDir: {}
-        - name: k6-scripts
-          configMap:
-            name: k6-scripts
-            items:
-              - key: 'test-merchant-apis.js'
-                path: 'test-merchant-apis.js'
-      restartPolicy: Never
-  backoffLimit: 0
+      args:
+        - run
+        - /k6-scripts/html/test-merchant-apis.js
+      volumeMounts:
+        - mountPath: /k6-scripts
+          name: cache-volume
+        - mountPath: /k6-scripts/html/test-merchant-apis.js
+          name: k6-scripts
+          subPath: test-merchant-apis.js
+    - name: vm2
+      image: nginx
+      volumeMounts:
+        - mountPath: /k6-scripts
+          name: cache-volume
+  #      volumeMounts:
+  #        - mountPath: /
+  #          name: k6-scripts
+  #          subPath: k6-scripts
+  volumes:
+    - name: cache-volume
+      hostPath:
+        # 宿主上目录位置
+        path: /data
+        # 此字段为可选
+        type: DirectoryOrCreate
+    #          emptyDir: {}
+    - name: k6-scripts
+      configMap:
+        name: k6-scripts
+        items:
+          - key: 'test-merchant-apis.js'
+            path: 'test-merchant-apis.js'
+  restartPolicy: Never
+#  backoffLimit: 0
 #  volumes:
 #    - name: cache-volume
 #      emptyDir:
