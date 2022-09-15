@@ -29,7 +29,12 @@ spec:
       #          subPath: k6-scripts
       volumes:
         - name: cache-volume
-          emptyDir: {}
+          hostPath:
+            # 宿主上目录位置
+            path: /data
+            # 此字段为可选
+            type: DirectoryOrCreate
+#          emptyDir: {}
         - name: k6-scripts
           configMap:
             name: k6-scripts
