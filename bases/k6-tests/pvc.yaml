@@ -16,9 +16,14 @@ spec:
         - mountPath: /k6-scripts/test-merchant-apis.js
           name: k6-scripts
           subPath: test-merchant-apis.js
-#        - mountPath: /k6-scripts/html
-#          name: k6-scripts
-#          subPath: html
+    - image: loadimpact/k6
+      name: vm3
+      args:
+        - run
+        - /k6-scripts/test-merchant-apis.js
+      volumeMounts:
+        - mountPath: /k6-scripts
+          name: cache-volume
     - name: vm2
       image: nginx
       volumeMounts:
@@ -30,13 +35,13 @@ spec:
   #          subPath: k6-scripts
   volumes:
     - name: cache-volume
-#      persistentVolumeClaim:
-#        claimName: test-volume
-#      hostPath:
-#        # 宿主上目录位置
-#        path: /data
-#        # 此字段为可选
-#        type: DirectoryOrCreate
+      #      persistentVolumeClaim:
+      #        claimName: test-volume
+      #      hostPath:
+      #        # 宿主上目录位置
+      #        path: /data
+      #        # 此字段为可选
+      #        type: DirectoryOrCreate
       emptyDir: {}
     - name: k6-scripts
       configMap:
@@ -44,6 +49,8 @@ spec:
         items:
           - key: 'test-merchant-apis.js'
             path: 'test-merchant-apis.js'
+          - key: 'k6'
+            path: 'k6'
   restartPolicy: Never
 #  backoffLimit: 0
 
