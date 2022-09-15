@@ -7,9 +7,9 @@ spec:
     - image: loadimpact/k6
       name: vm1
       #      command: ["sleep", "10m"]
-      args:
-        - run
-        - /k6-scripts/test-merchant-apis.js
+#      args:
+#        - run
+#        - /k6-scripts/test-merchant-apis.js
       volumeMounts:
         - mountPath: /k6-scripts
           name: cache-volume
