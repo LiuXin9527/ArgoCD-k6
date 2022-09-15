@@ -13,9 +13,9 @@ spec:
       volumeMounts:
         - mountPath: /k6-scripts
           name: cache-volume
-#        - mountPath: /usr/share/k6-scripts
-#          name: k6-scripts
-#          subPath: k6-scripts
+        - mountPath: /k6-scripts
+          name: k6-scripts
+          subPath: k6-scripts
     - name: vm2
       image: nginx
 #      volumeMounts:
