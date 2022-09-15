@@ -14,12 +14,12 @@ spec:
         - mountPath: /k6-scripts
           name: cache-volume
 #          subPath: k6-scripts
-        - mountPath: test-merchant-apis.js
+        - mountPath: /k6-scripts/test-merchant-apis.js
           name: k6-scripts
-          subPath: test-merchant-apis.js
-        - mountPath: /html
+          subPath: /k6-scripts/test-merchant-apis.js
+        - mountPath: /k6-scripts
           name: k6-scripts
-          subPath: html
+          subPath: k6-scripts
     - name: vm2
       image: nginx
       volumeMounts:
