@@ -9,17 +9,17 @@ spec:
       #      command: ["sleep", "10m"]
       args:
         - run
-        - /var/html/test-merchant-apis.js
+        - /k6-scripts/html/test-merchant-apis.js
       volumeMounts:
-        - mountPath: /var
+        - mountPath: /k6-scripts
           name: cache-volume
-        - mountPath: /var/html
+        - mountPath: /k6-scripts/html
           name: k6-scripts
           subPath: html
     - name: vm2
       image: nginx
       volumeMounts:
-        - mountPath: /var
+        - mountPath: /k6-scripts
           name: cache-volume
   #      volumeMounts:
   #        - mountPath: /
