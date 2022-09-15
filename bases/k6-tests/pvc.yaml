@@ -10,10 +10,13 @@ spec:
 #      args:
 #        - run
 #        - /k6-scripts/html/test-merchant-apis.js
+      envFrom:
+        - configMapRef:
+            name: k6-scripts
       volumeMounts:
-        - mountPath: /k6-scripts
-          name: cache-volume
-        - mountPath: /k6-scripts/html
+#        - mountPath: /k6-scripts
+#          name: cache-volume
+        - mountPath: /usr/share/k6-scripts
           name: k6-scripts
 #          subPath: k6-scripts
     - name: vm2
@@ -22,7 +25,7 @@ spec:
 #        - mountPath: /usr/share/nginx/html
 #          name: cache-volume
       volumeMounts:
-        - mountPath: /k6-scripts
+        - mountPath: /usr/share/k6-scripts
           name: cache-volume
   volumes:
     - name: cache-volume
