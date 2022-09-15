@@ -11,26 +11,23 @@ spec:
 #        - run
 #        - /k6-scripts/html/test-merchant-apis.js
       volumeMounts:
-        - mountPath: /k6-scripts
-          name: cache-volume
-        - mountPath: /
+#        - mountPath: /k6-scripts
+#          name: cache-volume
+        - mountPath: /k6-scripts/test-merchant-apis.js
           name: k6-scripts
-          subPath: k6-scripts
+          subPath: test-merchant-apis.js
     - name: vm2
       image: nginx
 #      volumeMounts:
 #        - mountPath: /usr/share/nginx/html
 #          name: cache-volume
-      volumeMounts:
-        - mountPath: /k6-scripts
-          name: cache-volume
+#      volumeMounts:
+#        - mountPath: /
+#          name: k6-scripts
+#          subPath: k6-scripts
   volumes:
     - name: cache-volume
-      hostPath:
-        # 宿主上目录位置
-        path: /
-        # 此字段为可选
-        type: Directory
+      emptyDir: {}
     - name: k6-scripts
       configMap:
         name: k6-scripts
