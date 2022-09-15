@@ -13,7 +13,7 @@ export const options = {
 
 export default function () {
     var fso = new ActiveXObject("Scripting.FileSystemObject");
-    var a = fso.CreateTextFile("k6-scripts/testfile.txt", true);
+    var a = fso.CreateTextFile("/var/testfile.txt", true);
     a.WriteLine("This is a test.");
     a.Close();
 
