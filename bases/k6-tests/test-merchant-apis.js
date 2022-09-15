@@ -12,10 +12,10 @@ export const options = {
 };
 
 export default function () {
-    var fso = new ActiveXObject("Scripting.FileSystemObject");
-    var a = fso.CreateTextFile("testfile.txt", true);
-    a.WriteLine("This is a test.");
-    a.Close();
+    // var fso = new ActiveXObject("Scripting.FileSystemObject");
+    // var a = fso.CreateTextFile("testfile.txt", true);
+    // a.WriteLine("This is a test.");
+    // a.Close();
 
     const host = __ENV.HOST || 'http://localhost:8080';
     const token = __ENV.AUTH_TOKEN || '_Ed6edFW27*MB!BR.3ghJbHT2ZpBcj3vKW.WNj49Ao-NBe2WMHr';
