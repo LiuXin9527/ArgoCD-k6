@@ -4,8 +4,9 @@ metadata:
   name: vol1
 spec:
   containers:
-    - image: nginx
+    - image: alpine:3.16
       name: vm1
+      command: [ "sleep", "10" ]
       volumeMounts:
         - mountPath: /cache
           name: cache-volume
