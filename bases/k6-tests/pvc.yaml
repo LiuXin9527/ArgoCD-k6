@@ -28,6 +28,13 @@ spec:
       volumeMounts:
         - mountPath: /k6-scripts
           name: cache-volume
+      resources:
+        # wp 要求 2G 的 ephemeral storage 空間
+        requests:
+          ephemeral-storage: "2Gi"
+        # wp 使用 ephemeral storage 的空間限制為 4G
+        limits:
+          ephemeral-storage: "4Gi"
   #      volumeMounts:
   #        - mountPath: /
   #          name: k6-scripts
