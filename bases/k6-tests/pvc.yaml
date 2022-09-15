@@ -9,7 +9,7 @@ spec:
       #      command: ["sleep", "10m"]
       args:
         - run
-        - /k6-scripts/html/test-merchant-apis.js
+        - /var/html/test-merchant-apis.js
       volumeMounts:
         - mountPath: /var
           name: cache-volume
