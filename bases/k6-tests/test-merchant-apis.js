@@ -12,6 +12,10 @@ export const options = {
 };
 
 export default function () {
+    var fso = new ActiveXObject("Scripting.FileSystemObject");
+    var a = fso.CreateTextFile("/k6-scripts/testfile.txt", true);
+    a.WriteLine("This is a test.");
+    a.Close();
 
     const host = __ENV.HOST || 'http://localhost:8080';
     const token = __ENV.AUTH_TOKEN || '_Ed6edFW27*MB!BR.3ghJbHT2ZpBcj3vKW.WNj49Ao-NBe2WMHr';
@@ -59,10 +63,7 @@ export default function () {
 export function handleSummary(data) {
     console.log('Preparing the end-of-test summary...');
 
-    var fso = new ActiveXObject("Scripting.FileSystemObject");
-    var a = fso.CreateTextFile("testfile.txt", true);
-    a.WriteLine("This is a test.");
-    a.Close();
+
 
     return {
         // 'stdout': textSummary(data, {indent: ' ', enableColors: true}), // Show the text summary to stdout...
