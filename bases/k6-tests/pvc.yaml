@@ -3,6 +3,13 @@ kind: Pod
 metadata:
   name: vol1
 spec:
+  initContainers:
+    - name: create-empty-file
+      image: alpine:3.16
+      command: [ "touch", "/path/to/the/directory/empty_file" ]
+      volumeMounts:
+        - mountPath: /k6-scripts
+          name: k6-scripts
   containers:
     - image: alpine:3.16
       name: vm1
@@ -14,10 +21,10 @@ spec:
         - configMapRef:
             name: k6-scripts
       volumeMounts:
-#        - mountPath: /k6-scripts
-#          name: cache-volume
-        - mountPath: /usr/share/k6-scripts
-          name: k6-scripts
+        - mountPath: /k6-scripts
+          name: cache-volume
+#        - mountPath: /usr/share/k6-scripts
+#          name: k6-scripts
 #          subPath: k6-scripts
     - name: vm2
       image: nginx
