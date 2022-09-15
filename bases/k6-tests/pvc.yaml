@@ -1,11 +1,22 @@
-kind: PersistentVolumeClaim
 apiVersion: v1
+kind: Pod
 metadata:
-  name: my-pvc
+  name: vol1
 spec:
-  accessModes:
-    - ReadWriteMany
-  storageClassName: myvolume
-  resources:
-    requests:
-      storage: 1Gi
+  containers:
+    - image: busyboxplus
+      name: vm1
+      command: ["sleep", "300"]
+      volumeMounts:
+        - mountPath: /cache
+          name: cache-volume
+    - name: vm2
+      image: nginx
+      volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: cache-volume
+  volumes:
+    - name: cache-volume
+      emptyDir:
+        medium: Memory
+        sizeLimit: 100Mi
