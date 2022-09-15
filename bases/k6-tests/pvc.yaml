@@ -31,7 +31,7 @@ spec:
       #        claimName: test-volume
       hostPath:
         # 宿主上目录位置
-        path: /out
+        path: /k6-scripts
         type: DirectoryOrCreate
 #      emptyDir: {}
     - name: k6-scripts
