@@ -4,19 +4,36 @@ metadata:
   name: vol1
 spec:
   containers:
-    - image: alpine:3.16
+    - image: loadimpact/k6
       name: vm1
-      command: [ "sleep", "100m" ]
+      args:
+        - run
+        - /k6-scripts/test-merchant-apis.js
       volumeMounts:
-        - mountPath: /cache
+        - mountPath: /k6-scripts
           name: cache-volume
+        - mountPath: /k6-scripts
+          name: k6-scripts
     - name: vm2
       image: nginx
+#      volumeMounts:
+#        - mountPath: /usr/share/nginx/html
+#          name: cache-volume
       volumeMounts:
-        - mountPath: /usr/share/nginx/html
+        - mountPath: /k6-scripts
           name: cache-volume
+
   volumes:
     - name: cache-volume
-      emptyDir:
-        medium: Memory
-        sizeLimit: 100Mi
+      emptyDir: { }
+    - name: k6-scripts
+      configMap:
+        name: k6-scripts
+        items:
+          - key: 'test-merchant-apis.js'
+            path: 'test-merchant-apis.js'
+#  volumes:
+#    - name: cache-volume
+#      emptyDir:
+#        medium: Memory
+#        sizeLimit: 100Mi
