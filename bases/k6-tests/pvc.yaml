@@ -16,10 +16,10 @@ spec:
 #          subPath: k6-scripts
         - mountPath: /k6-scripts/test-merchant-apis.js
           name: k6-scripts
-          subPath: /k6-scripts/test-merchant-apis.js
-        - mountPath: /k6-scripts
+          subPath: test-merchant-apis.js
+        - mountPath: /k6-scripts/html
           name: k6-scripts
-          subPath: k6-scripts
+          subPath: html
     - name: vm2
       image: nginx
       volumeMounts:
