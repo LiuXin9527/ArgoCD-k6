@@ -105,7 +105,7 @@ spec:
             mountPath: /k6-scripts
       volumes:
         - name: k6-scripts
-          hostPath:
+          configMap:
             name: k6-scripts
             items:
               - key: 'upload-report.js'

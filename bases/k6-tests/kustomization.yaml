@@ -9,7 +9,9 @@ resources:
 #  - argo-role.yaml
 #  - pre-sync-job.yaml
 #  - argo-workflow.yaml
-  - argo-dag.yaml
+  - pvc.yaml
+  - hostpath.yaml
+#  - argo-dag.yaml
 
 configMapGenerator:
   - name: k6-scripts

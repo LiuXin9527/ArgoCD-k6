@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: apiserver
+spec:
+  containers:
+    - name: apiserver
+      image: loadimpact/k6
+      args:
+        - run
+        - /k6-scripts/upload-report.js
+      volumeMounts:
+        - mountPath: /tmp
+          name: tmp-volume
+          subPath: app1
+      imagePullPolicy: Always
+  volumes:
+    - name: tmp-volume
+      persistentVolumeClaim:
+        claimName: 'my-pvc'
+      configMap:
+        name: tmp-volume
+        items:
+          - key: 'upload-report.js'
+            path: 'upload-report.js'
+          - key: 'aws.min.js.map'
+            path: 'aws.min.js.map'
+          - key: 'aws.min.js'
+            path: 'aws.min.js'
