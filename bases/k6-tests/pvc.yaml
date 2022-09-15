@@ -3,13 +3,6 @@ kind: Pod
 metadata:
   name: vol1
 spec:
-  initContainers:
-    - name: create-empty-file
-      image: alpine:3.16
-      command: [ "touch", "/empty_file" ]
-      volumeMounts:
-        - mountPath: /k6-scripts
-          name: k6-scripts
   containers:
     - image: alpine:3.16
       name: vm1
@@ -17,9 +10,6 @@ spec:
 #      args:
 #        - run
 #        - /k6-scripts/html/test-merchant-apis.js
-      envFrom:
-        - configMapRef:
-            name: k6-scripts
       volumeMounts:
         - mountPath: /k6-scripts
           name: cache-volume
@@ -32,12 +22,15 @@ spec:
 #        - mountPath: /usr/share/nginx/html
 #          name: cache-volume
       volumeMounts:
-        - mountPath: /usr/share/k6-scripts
+        - mountPath: /k6-scripts
           name: cache-volume
   volumes:
     - name: cache-volume
-      persistentVolumeClaim:
-        claimName: test-volume
+      hostPath:
+        # 宿主上目录位置
+        path: /
+        # 此字段为可选
+        type: Directory
     - name: k6-scripts
       configMap:
         name: k6-scripts
@@ -50,27 +43,27 @@ spec:
 #        medium: Memory
 #        sizeLimit: 100Mi
 
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: test-volume
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: my-pv
-spec:
-  capacity:
-    storage: 1Gi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: /k6-scripts
+#---
+#apiVersion: v1
+#kind: PersistentVolumeClaim
+#metadata:
+#  name: test-volume
+#spec:
+#  accessModes:
+#    - ReadWriteOnce
+#  resources:
+#    requests:
+#      storage: 1Gi
+#
+#---
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: my-pv
+#spec:
+#  capacity:
+#    storage: 1Gi
+#  accessModes:
+#    - ReadWriteOnce
+#  hostPath:
+#    path: /k6-scripts
