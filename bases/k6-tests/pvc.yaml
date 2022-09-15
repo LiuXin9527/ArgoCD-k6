@@ -12,7 +12,7 @@ spec:
       volumeMounts:
         - mountPath: /k6-scripts
           name: cache-volume
-        - mountPath: ''
+        - mountPath: /
           name: k6-scripts
           subPath: k6-scripts
     - name: vm2
