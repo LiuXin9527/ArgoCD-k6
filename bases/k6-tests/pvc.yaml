@@ -16,6 +16,13 @@ spec:
         - mountPath: /k6-scripts/html/test-merchant-apis.js
           name: k6-scripts
           subPath: test-merchant-apis.js
+      resources:
+        # wp 要求 2G 的 ephemeral storage 空間
+        requests:
+          ephemeral-storage: "2Gi"
+        # wp 使用 ephemeral storage 的空間限制為 4G
+        limits:
+          ephemeral-storage: "4Gi"
     - name: vm2
       image: nginx
       volumeMounts:
