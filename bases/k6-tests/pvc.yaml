@@ -3,40 +3,19 @@ kind: Pod
 metadata:
   name: vol1
 spec:
-  initContainers:
+  containers:
     - image: loadimpact/k6
       name: vm1
       #      command: ["sleep", "10m"]
-#      args:
-#        - run
-#        - /k6-scripts/test-merchant-apis.js
-      volumeMounts:
-        - mountPath: /k6-scripts
-          name: cache-volume
-        - mountPath: /k6-scripts/test-merchant-apis.js
-          name: k6-scripts
-          subPath: test-merchant-apis.js
-  containers:
-#    - image: loadimpact/k6
-#      name: vm1
-#      #      command: ["sleep", "10m"]
-#      args:
-#        - run
-#        - /k6-scripts/test-merchant-apis.js
-#      volumeMounts:
-#        - mountPath: /k6-scripts
-#          name: cache-volume
-#        - mountPath: /k6-scripts/test-merchant-apis.js
-#          name: k6-scripts
-#          subPath: test-merchant-apis.js
-    - image: loadimpact/k6
-      name: vm3
       args:
         - run
         - /k6-scripts/test-merchant-apis.js
       volumeMounts:
         - mountPath: /k6-scripts
           name: cache-volume
+        - mountPath: /k6-scripts/test-merchant-apis.js
+          name: k6-scripts
+          subPath: test-merchant-apis.js
     - name: vm2
       image: nginx
       volumeMounts:
@@ -53,7 +32,7 @@ spec:
       hostPath:
         # 宿主上目录位置
         path: /out
-        type: Directory
+        type: DirectoryOrCreate
 #      emptyDir: {}
     - name: k6-scripts
       configMap:
