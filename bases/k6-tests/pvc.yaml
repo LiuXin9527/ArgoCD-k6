@@ -6,7 +6,7 @@ spec:
   initContainers:
     - name: create-empty-file
       image: alpine:3.16
-      command: [ "touch", "/path/to/the/directory/empty_file" ]
+      command: [ "touch", "/empty_file" ]
       volumeMounts:
         - mountPath: /k6-scripts
           name: k6-scripts
