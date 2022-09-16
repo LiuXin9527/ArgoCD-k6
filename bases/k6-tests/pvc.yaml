@@ -5,6 +5,16 @@ metadata:
 spec:
   securityContext:
     fsGroup: 2000
+  initContainers:
+  - name: chown
+    image: debian:stable-slim
+    command:
+      - /bin/sh
+      - -c
+      - "chown -R 1001:1001 /etc/k6-config"
+    volumeMounts:
+      - mountPath: /etc/k6-config
+        name: cache-volume
   containers:
     - image: loadimpact/k6:0.29.0
       securityContext:
