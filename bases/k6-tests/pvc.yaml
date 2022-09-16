@@ -7,7 +7,7 @@ spec:
     - image: grafana/k6
       name: vm1
       #      command: ["sleep", "10m"]
-      command: ['k6','run', '/k6-scripts/test-merchant-apis.js --out json=test.json']
+      command: ['k6','run', '/k6-scripts/test-merchant-apis.js']
 #      args:
 #        - run
 #        - /k6-scripts/test-merchant-apis.js --out json=test.json
