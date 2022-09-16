@@ -1,0 +1,10 @@
+apiVersion: k6.io/v1alpha1
+kind: K6
+metadata:
+  name: k6-sample-2
+spec:
+  parallelism: 4
+  script:
+    configMap:
+      name: test-merchant-apis.js
+      file: test-merchant-apis.js
