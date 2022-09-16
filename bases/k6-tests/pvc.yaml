@@ -16,7 +16,7 @@ spec:
       - mountPath: /etc/k6-config
         name: cache-volume
   containers:
-    - image: loadimpact/k6:0.29.0
+    - image: loadimpact/k6:latest
       securityContext:
         runAsUser: 1001
         runAsGroup: 2000
