@@ -2,6 +2,8 @@ import http from 'k6/http';
 import {group, check} from 'k6';
 import {Rate} from "k6/metrics";
 import {htmlReport} from "https://raw.githubusercontent.com/benc-uk/k6-reporter/2.4.0/dist/bundle.js";
+// import {htmlReport} from "./bundle.js";
+
 
 var failureRate = new Rate("check_failure_rate");
 
@@ -63,11 +65,13 @@ export default function () {
 export function handleSummary(data) {
     console.log('Preparing the end-of-test summary...');
 
-
-
     return {
         // 'stdout': textSummary(data, {indent: ' ', enableColors: true}), // Show the text summary to stdout...
         "lcp-merchant-report.html": htmlReport(data)
     };
+}
 
+
+export function executeAfterAll() {
+    console.log("測試 TEST")
 }
