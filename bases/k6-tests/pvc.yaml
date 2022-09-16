@@ -5,6 +5,9 @@ metadata:
 spec:
   containers:
     - image: loadimpact/k6:0.29.0
+      securityContext:
+        runAsUser: 1001
+        runAsGroup: 2000
       name: vm1
       #      command: ["sleep", "10m"]
       command: ['k6','run', "--out", "json=/etc/k6-config/test.json", "/etc/k6-config/test-merchant-apis.js"]
