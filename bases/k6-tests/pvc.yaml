@@ -7,7 +7,7 @@ spec:
     - image: loadimpact/k6:0.29.0
       name: vm1
       #      command: ["sleep", "10m"]
-      command: ['k6','run', "--out", "json=/home/k6/test.json", ""/scripts/test-merchant-apis.js"]
+      command: ['k6','run', "--out", "json=/home/k6/test.json", "/etc/k6-config/test-merchant-apis.js"]
 #      args:
 #        - run
 #        - /k6-scripts/test-merchant-apis.js --out json=test.json
@@ -20,7 +20,7 @@ spec:
     - name: vm2
       image: nginx
       volumeMounts:
-        - mountPath: /scripts
+        - mountPath: /tc/k6-config
           name: cache-volume
   #      volumeMounts:
   #        - mountPath: /
