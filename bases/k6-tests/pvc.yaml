@@ -4,12 +4,13 @@ metadata:
   name: vol1
 spec:
   containers:
-    - image: loadimpact/k6
+    - image: grafana/k6
       name: vm1
       #      command: ["sleep", "10m"]
-      args:
-        - run
-        - /k6-scripts/test-merchant-apis.js --out json=test.json
+      command: ['k6','run', '/k6-scripts/test-merchant-apis.js','--out json=test.json']
+#      args:
+#        - run
+#        - /k6-scripts/test-merchant-apis.js --out json=test.json
       volumeMounts:
         - mountPath: /k6-scripts
           name: cache-volume

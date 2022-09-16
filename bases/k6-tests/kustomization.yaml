@@ -9,6 +9,7 @@ resources:
 #  - argo-role.yaml
 #  - pre-sync-job.yaml
 #  - argo-workflow.yaml
+#  - k6-test.yaml
   - pvc.yaml
 #  - hostpath.yaml
 #  - argo-dag.yaml
