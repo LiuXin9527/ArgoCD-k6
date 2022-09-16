@@ -7,20 +7,20 @@ spec:
     - image: grafana/k6
       name: vm1
       #      command: ["sleep", "10m"]
-      command: ['k6','run', '/k6-scripts/test-merchant-apis.js']
+      command: ['k6','run', '/scripts/test-merchant-apis.js']
 #      args:
 #        - run
 #        - /k6-scripts/test-merchant-apis.js --out json=test.json
       volumeMounts:
-        - mountPath: /k6-scripts
-          name: cache-volume
-        - mountPath: /k6-scripts/test-merchant-apis.js
+#        - mountPath: /k6-scripts
+#          name: cache-volume
+        - mountPath: /scripts
           name: k6-scripts
-          subPath: test-merchant-apis.js
+#          subPath: test-merchant-apis.js
     - name: vm2
       image: nginx
       volumeMounts:
-        - mountPath: /k6-scripts
+        - mountPath: /scripts
           name: cache-volume
   #      volumeMounts:
   #        - mountPath: /
@@ -32,7 +32,7 @@ spec:
       #        claimName: test-volume
       hostPath:
         # 宿主上目录位置
-        path: /k6-scripts
+        path: /scripts
         type: DirectoryOrCreate
 #      emptyDir: {}
     - name: k6-scripts
