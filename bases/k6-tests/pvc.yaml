@@ -4,17 +4,17 @@ metadata:
   name: vol1
 spec:
   containers:
-    - image: grafana/k6
+    - image: loadimpact/k6:0.29.0
       name: vm1
       #      command: ["sleep", "10m"]
-      command: ['k6','run', '/scripts/test-merchant-apis.js']
+      command: ['k6','run', "--out", "json=/home/k6/test.json", ""/scripts/test-merchant-apis.js"]
 #      args:
 #        - run
 #        - /k6-scripts/test-merchant-apis.js --out json=test.json
       volumeMounts:
 #        - mountPath: /k6-scripts
 #          name: cache-volume
-        - mountPath: /scripts
+        - mountPath: /etc/k6-config
           name: k6-scripts
 #          subPath: test-merchant-apis.js
     - name: vm2
@@ -32,7 +32,7 @@ spec:
       #        claimName: test-volume
       hostPath:
         # 宿主上目录位置
-        path: /scripts
+        path: /etc/k6-config
         type: DirectoryOrCreate
 #      emptyDir: {}
     - name: k6-scripts

@@ -67,7 +67,7 @@ export function handleSummary(data) {
 
     return {
         // 'stdout': textSummary(data, {indent: ' ', enableColors: true}), // Show the text summary to stdout...
-        "lcp-merchant-report.html": htmlReport(data)
+        "/home/k6/lcp-merchant-report.html": htmlReport(data)
     };
 }
 
