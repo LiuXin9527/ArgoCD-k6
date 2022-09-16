@@ -12,11 +12,11 @@ spec:
 #        - run
 #        - /k6-scripts/test-merchant-apis.js --out json=test.json
       volumeMounts:
-#        - mountPath: /k6-scripts
-#          name: cache-volume
         - mountPath: /etc/k6-config
+          name: cache-volume
+        - mountPath: /etc/k6-config/test-merchant-apis.js
           name: k6-scripts
-#          subPath: test-merchant-apis.js
+          subPath: test-merchant-apis.js
     - name: vm2
       image: nginx
       volumeMounts:
