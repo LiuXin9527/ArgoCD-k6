@@ -22,7 +22,7 @@ spec:
         runAsGroup: 2000
       name: vm1
       #      command: ["sleep", "10m"]
-      command: ['k6','run', "--out", "json=/etc/k6-config/test.json", "/etc/k6-config/test-merchant-apis.js"]
+      command: ['k6','run',  "/etc/k6-config/test-merchant-apis.js"]
 #      args:
 #        - run
 #        - /k6-scripts/test-merchant-apis.js --out json=test.json
