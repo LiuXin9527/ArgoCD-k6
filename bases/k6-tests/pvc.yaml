@@ -7,20 +7,20 @@ spec:
     - image: loadimpact/k6:0.29.0
       name: vm1
       #      command: ["sleep", "10m"]
-      command: ['k6','run', "--out", "json=/home/k6/test.json", "/etc/k6-config/test-merchant-apis.js"]
+      command: ['k6','run', "--out", "json=/home/k6/test.json", "/home/k6/test-merchant-apis.js"]
 #      args:
 #        - run
 #        - /k6-scripts/test-merchant-apis.js --out json=test.json
       volumeMounts:
-        - mountPath: /etc/k6-config
+        - mountPath: /home/k6
           name: cache-volume
-        - mountPath: /etc/k6-config/test-merchant-apis.js
+        - mountPath: /home/k6/test-merchant-apis.js
           name: k6-scripts
           subPath: test-merchant-apis.js
     - name: vm2
       image: nginx
       volumeMounts:
-        - mountPath: /tc/k6-config
+        - mountPath: /home/k6
           name: cache-volume
   #      volumeMounts:
   #        - mountPath: /
@@ -32,7 +32,7 @@ spec:
       #        claimName: test-volume
       hostPath:
         # 宿主上目录位置
-        path: /etc/k6-config
+        path: /home/k6
         type: DirectoryOrCreate
 #      emptyDir: {}
     - name: k6-scripts
