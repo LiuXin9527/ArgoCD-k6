@@ -110,8 +110,8 @@ spec:
           - name: k6-volume
             mountPath: /k6-scripts/report
           - name: k6-scripts
-            mountPath: /k6-scripts/upload-report.js
-            subPath: upload-report.js
+            mountPath: /k6-scripts
+            subPath: k6-scripts
       volumes:
         - name: k6-volume
           emptyDir: {}
