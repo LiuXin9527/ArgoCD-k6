@@ -11,7 +11,7 @@ spec:
     - metadata:
         name: k6-volume
       spec:
-        accessModes: [ "ReadOnlyMany" ]
+        accessModes: [ "ReadWriteOnce" ]
         storageClassName: standard
         resources:
           requests:
