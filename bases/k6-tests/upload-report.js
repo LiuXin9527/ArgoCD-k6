@@ -13,10 +13,10 @@ const awsConfig = new AWSConfig({
 
 const s3 = new S3Client(awsConfig)
 
-const merchantName = 'lcp-settle-api/lcp-merchant-report.html'
+const merchantName = 'lcp-merchant-report.html'
 const merchantReport = open(`./report/${merchantName}`, 'r')
 
-const paymentFeeName = 'lcp-settle-api/lcp-payment-fee-report.html'
+const paymentFeeName = 'lcp-payment-fee-report.html'
 const paymentFeeReport = open(`./report/${paymentFeeName}`, 'r')
 
 const bucketName = 'lcp-settle-auto-test-reports'
@@ -29,7 +29,7 @@ export default function () {
         exec.test.abort();
     }
 
-    s3.putObject(bucketName, merchantName, merchantReport);
-    s3.putObject(bucketName, paymentFeeName, paymentFeeReport);
+    s3.putObject(bucketName, "lcp-settle-api/" + merchantName, merchantReport);
+    s3.putObject(bucketName, "lcp-settle-api/" + paymentFeeName, paymentFeeReport);
     s3.getObject(bucketName, merchantName);
 }
