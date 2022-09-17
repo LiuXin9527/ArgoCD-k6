@@ -1,4 +1,5 @@
 // import {htmlReport} from "./bundle.js";
+import {sleep} from 'k6';
 
 import {AWSConfig, S3Client} from './aws.min.js'
 
@@ -11,7 +12,6 @@ const awsConfig = new AWSConfig({
 })
 
 const s3 = new S3Client(awsConfig)
-
 
 const merchantName = 'lcp-merchant-report.html'
 const merchantReport = open(`./report/${merchantName}`, 'r')
@@ -33,4 +33,5 @@ export default function () {
     s3.putObject(bucketName, paymentFeeName, paymentFeeReport);
     s3.getObject(bucketName, merchantName);
 
+    sleep(60)
 }
