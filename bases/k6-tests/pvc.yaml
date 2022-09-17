@@ -20,6 +20,7 @@ spec:
     volumeMounts:
       - mountPath: /k6-scripts/report
         name: k6-volume
+        subPath: report
   containers:
     - image: loadimpact/k6:latest
 #      securityContext:
