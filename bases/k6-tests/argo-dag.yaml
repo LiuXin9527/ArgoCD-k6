@@ -53,7 +53,7 @@ spec:
       container:
         image: loadimpact/k6
         imagePullPolicy: IfNotPresent
-        command: ['k6','run',  "/k6-scripts/test-merchant-apis.js"]
+        command: ['k6','run',"-eHOST=https://lcp-settle-api.line-apps-beta.com",  "/k6-scripts/test-merchant-apis.js"]
         volumeMounts:
           - name: k6-volume
             mountPath: /k6-scripts/report
@@ -72,7 +72,7 @@ spec:
       container:
         image: loadimpact/k6
         imagePullPolicy: IfNotPresent
-        command: ['k6','run',  "/k6-scripts/test-payment-fee-apis.js"]
+        command: ['k6','run',"-eHOST=https://lcp-settle-api.line-apps-beta.com",  "/k6-scripts/test-payment-fee-apis.js"]
         volumeMounts:
           - name: k6-volume
             mountPath: /k6-scripts/report

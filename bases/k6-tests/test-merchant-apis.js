@@ -6,11 +6,22 @@ import {htmlReport} from "https://raw.githubusercontent.com/benc-uk/k6-reporter/
 
 var failureRate = new Rate("check_failure_rate");
 
-export const options = {
+export let options = {
     thresholds: {
-        'checks': ['rate == 1'],
+        // We want the 95th percentile of all HTTP request durations to be less than 500ms
+        "http_req_duration": ["p(95)<500"],
+        // Requests with the staticAsset tag should finish even faster
+        "http_req_duration{staticAsset:yes}": ["p(99)<250"],
+        // Thresholds based on the custom metric we defined and use to track application failures
+        "check_failure_rate": [
+            // Global failure rate should be less than 1%
+            "rate<0.01",
+            // Abort the test early if it climbs over 5%
+            {threshold: "rate<=0.05", abortOnFail: true},
+        ],
     },
 };
+
 export default function () {
 
     const host = __ENV.HOST || 'http://localhost:8080';
@@ -48,7 +59,7 @@ export default function () {
         const res = http.get(`${baseUrl}/merchant/status/${sellerId}`, params);
 
         check(res, {
-            'status is 200': (r) => r.status === 200,
+            'status is 200': (r) => r.status === 2100,
             'success is true': (r) => r.json().success === true,
             'status is not registered': (r) => checkResultNotEmpty(r) && r.json().result.status === "DO_NOT_REGISTER",
         });
@@ -64,8 +75,3 @@ export function handleSummary(data) {
         "/k6-scripts/report/lcp-merchant-report.html": htmlReport(data)
     };
 }
-
-
-// export function executeAfterAll() {
-//     console.log("測試 TEST")
-// }
