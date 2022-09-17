@@ -7,9 +7,17 @@ metadata:
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   entrypoint: k6-integration
-  volumes:
-    - name: k6-volume
-      emptyDir: {}
+  volumeClaimTemplates:
+    - metadata:
+        name: k6-volume
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi
+#  volumes:
+#    - name: k6-volume
+#      emptyDir: {}
   templates:
     - name: k6-integration
       dag:
