@@ -3,7 +3,6 @@ import {group, check} from 'k6';
 import {Rate} from "k6/metrics";
 import {htmlReport} from "https://raw.githubusercontent.com/benc-uk/k6-reporter/2.4.0/dist/bundle.js";
 // import {htmlReport} from "./bundle.js";
-// import file from 'k6/x/file';
 
 var failureRate = new Rate("check_failure_rate");
 
@@ -12,12 +11,7 @@ export const options = {
         'checks': ['rate == 1'],
     },
 };
-// const filepath = 'output.txt';
 export default function () {
-
-
-    // file.writeString(filepath, 'Writing to file');
-
 
     const host = __ENV.HOST || 'http://localhost:8080';
     const token = __ENV.AUTH_TOKEN || '_Ed6edFW27*MB!BR.3ghJbHT2ZpBcj3vKW.WNj49Ao-NBe2WMHr';

@@ -1,5 +1,8 @@
 import http from 'k6/http';
 import { group, check } from 'k6';
+import {htmlReport} from "https://raw.githubusercontent.com/benc-uk/k6-reporter/2.4.0/dist/bundle.js";
+
+// var failureRate = new Rate("check_failure_rate");
 
 export const options = {
   thresholds: {
