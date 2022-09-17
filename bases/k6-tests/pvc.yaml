@@ -33,8 +33,9 @@ spec:
 #        - run
 #        - /k6-scripts/test-merchant-apis.js --out json=test.json
       volumeMounts:
-#        - mountPath: /k6-scripts/report
-#          name: k6-volume
+        - mountPath: /k6-scripts/report
+          name: k6-volume
+          subPath: report
         - mountPath: /k6-scripts/test-merchant-apis.js
           name: k6-scripts
           subPath: test-merchant-apis.js
