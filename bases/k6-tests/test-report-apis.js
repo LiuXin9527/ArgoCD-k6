@@ -42,42 +42,12 @@ export let options = {
 export default function () {
     let response = http.get("https://test.k6.io/");
 
-    // check() returns false if any of the specified conditions fail
-    let checkRes = check(response, {
-        "http2 is used": (r) => r.proto === "HTTP/2.0",
-        "status is 200": (r) => r.status === 200,
-        "content is present": (r) => r.body.indexOf("Collection of simple web-pages suitable for load testing.") !== -1,
-    });
-
-    // We reverse the check() result since we want to count the failures
-    failureRate.add(!checkRes);
-
-    // Load static assets, all requests
-    group("Static Assets", function () {
-        // Execute multiple requests in parallel like a browser, to fetch some static resources
-        let resps = http.batch([
-            ["GET", "https://test.k6.io/static/css/site.css", null, {tags: {staticAsset: "yes"}}],
-            ["GET", "https://test.k6.io/static/favicon.ico", null, {tags: {staticAsset: "yes"}}],
-            ["GET", "https://test.k6.io/static/js/prisms.js", null, {tags: {staticAsset: "yes"}}],
-        ]);
-        // Combine check() call with failure tracking
-        failureRate.add(!check(resps, {
-            "status is 200": (r) => r[0].status === 200 && r[1].status === 200,
-            "reused connection": (r) => r[0].timings.connecting == 0,
-        }));
-    });
-
     // sleep(Math.random() * 3 + 2); // Random sleep between 2s and 5s
 }
 
 export function handleSummary(data) {
     console.log('Preparing the end-of-test summary...');
 
-    // Send the results to some remote server or trigger a hook
-    // const resp = http.post('https://httpbin.test.k6.io/anything', JSON.stringify(data));
-    // if (resp.status != 200) {
-    //   console.error('Could not send summary, got status ' + resp.status);
-    // }
     console.log("測試 handleSummary")
     return {
         // 'stdout': textSummary(data, {indent: ' ', enableColors: true}), // Show the text summary to stdout...
@@ -88,9 +58,4 @@ export function handleSummary(data) {
         // you can write your own JS helpers to transform the summary data however you like!
     };
 
-}
-
-export function teardown(data) {
-    console.log("測試 teardown")
-    // 4. teardown code
 }

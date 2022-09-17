@@ -1,7 +1,7 @@
 
 // import {htmlReport} from "./bundle.js";
 
-import {AWSConfig, S3Client} from './aws.min.js'
+import {AWSConfig, S3Client} from './k6-scripts/aws.min.js'
 
 const awsConfig = new AWSConfig({
     region: 'verda-jp-1',
@@ -14,7 +14,7 @@ const awsConfig = new AWSConfig({
 const s3 = new S3Client(awsConfig)
 
 const merchantName = 'lcp-merchant-report.html'
-const merchantReport = open(`./k6-scripts/${merchantName}`, 'r')
+const merchantReport = open(`./k6-scripts/report/${merchantName}`, 'r')
 const bucketName = 'lcp-settle-auto-test-reports'
 
 
