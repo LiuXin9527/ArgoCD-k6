@@ -13,13 +13,13 @@ const awsConfig = new AWSConfig({
 
 const s3 = new S3Client(awsConfig)
 
-const merchantName = 'lcp-merchant-report.html'
+const merchantName = 'lcp-settle-api/lcp-merchant-report.html'
 const merchantReport = open(`./report/${merchantName}`, 'r')
 
-const paymentFeeName = 'lcp-payment-fee-report.html'
+const paymentFeeName = 'lcp-settle-api/lcp-payment-fee-report.html'
 const paymentFeeReport = open(`./report/${paymentFeeName}`, 'r')
 
-const bucketName = 'lcp-settle-auto-test-reports/lcp-settle-api'
+const bucketName = 'lcp-settle-auto-test-reports'
 
 
 export default function () {
@@ -32,6 +32,4 @@ export default function () {
     s3.putObject(bucketName, merchantName, merchantReport);
     s3.putObject(bucketName, paymentFeeName, paymentFeeReport);
     s3.getObject(bucketName, merchantName);
-
-    sleep(60)
 }
