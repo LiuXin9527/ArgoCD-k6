@@ -6,12 +6,17 @@ spec:
 #  securityContext:
 #    fsGroup: 2000
   initContainers:
-  - name: chown
-    image: debian:stable-slim
-    command:
-      - /bin/sh
+  - name: preparations
+    image: alpine:3.16
+    command: ["/bin/sh"]
+    args:
       - -c
-      - "chown -R 1001:1001 /k6-scripts"
+      - >-
+        chown -R 1001:1001 /k6-script
+        sleep 5m
+#      - /bin/sh
+#      - -c
+#      - "chown -R 1001:1001 /k6-scripts"
     volumeMounts:
       - mountPath: /k6-scripts/report
         name: k6-volume
@@ -27,16 +32,16 @@ spec:
 #        - run
 #        - /k6-scripts/test-merchant-apis.js --out json=test.json
       volumeMounts:
-        - mountPath: /k6-scripts/report
-          name: k6-volume
+#        - mountPath: /k6-scripts/report
+#          name: k6-volume
         - mountPath: /k6-scripts/test-merchant-apis.js
           name: k6-scripts
           subPath: test-merchant-apis.js
     - name: vm2
       image: nginx
       volumeMounts:
-        - mountPath: /k6-scripts/report
-          name: k6-volume
+#        - mountPath: /k6-scripts/report
+#          name: k6-volume
   volumes:
     - name: k6-volume
       #      persistentVolumeClaim:
