@@ -13,9 +13,10 @@ const awsConfig = new AWSConfig({
 
 const s3 = new S3Client(awsConfig)
 
-const data = open('./lcp-merchant-report.html', 'r')
+const merchantName = 'lcp-merchant-report.html'
+const merchantReport = open(`./k6-scripts/${merchantName}`, 'r')
 const bucketName = 'lcp-settle-auto-test-reports'
-const reportName = 'lcp-merchant-report.html'
+
 
 export default function () {
     const buckets = s3.listBuckets();
@@ -24,8 +25,8 @@ export default function () {
         exec.test.abort();
     }
 
-    s3.putObject(bucketName, reportName, data);
+    s3.putObject(bucketName, merchantName, merchantReport);
 
-    s3.getObject(bucketName, reportName);
+    s3.getObject(bucketName, merchantName);
 
 }

@@ -11,9 +11,9 @@ resources:
 #  - argo-workflow.yaml
 #  - k6-test-1.yaml
 #  - k6-test.yaml
-  - pvc.yaml
+#  - pvc.yaml
 #  - hostpath.yaml
-#  - argo-dag.yaml
+  - argo-dag.yaml
 
 configMapGenerator:
   - name: k6-scripts

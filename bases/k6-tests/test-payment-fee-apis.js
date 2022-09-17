@@ -52,3 +52,12 @@ export default function () {
   });
 
 }
+
+export function handleSummary(data) {
+  console.log('Preparing the end-of-test summary...');
+
+  return {
+    // 'stdout': textSummary(data, {indent: ' ', enableColors: true}), // Show the text summary to stdout...
+    "/k6-scripts/report/lcp-payment-fee-report.html": htmlReport(data),
+  };
+}
