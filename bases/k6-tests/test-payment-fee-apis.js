@@ -41,6 +41,8 @@ export default function () {
 
   group('GET /merchant/status/{sellerId}', () => {
 
+  });
+
     group('Should return 200 with result approved', () => {
       const sellerId = 500001919;
       const res = http.get(`${baseUrl}/merchant/status/${sellerId}`, params);
@@ -63,7 +65,7 @@ export default function () {
       });
     });
 
-  });
+
 
 }
 
@@ -72,6 +74,6 @@ export function handleSummary(data) {
 
   return {
     // 'stdout': textSummary(data, {indent: ' ', enableColors: true}), // Show the text summary to stdout...
-    "/k6-scripts/report/lcp-payment-fee-report.html": htmlReport(data)
+    "lcp-payment-fee-report.html": htmlReport(data)
   };
 }
