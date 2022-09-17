@@ -1,4 +1,3 @@
-
 // import {htmlReport} from "./bundle.js";
 
 import {AWSConfig, S3Client} from './aws.min.js'
@@ -15,6 +14,10 @@ const s3 = new S3Client(awsConfig)
 
 const merchantName = 'lcp-merchant-report.html'
 const merchantReport = open(`./report/${merchantName}`, 'r')
+
+const paymentFeeName = 'lcp-payment-fee-report.html'
+const paymentFeeReport = open(`./report/${paymentFeeName}`, 'r')
+
 const bucketName = 'lcp-settle-auto-test-reports'
 
 
@@ -26,7 +29,7 @@ export default function () {
     }
 
     s3.putObject(bucketName, merchantName, merchantReport);
-    s3.putObject(bucketName, "lcp-payment-fee-report.html", open(`./report/lcp-payment-fee-report.html`, 'r'));
+    s3.putObject(bucketName, paymentFeeName, paymentFeeReport);
     s3.getObject(bucketName, merchantName);
 
 }
