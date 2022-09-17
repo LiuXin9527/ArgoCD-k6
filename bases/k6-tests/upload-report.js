@@ -12,15 +12,14 @@ const awsConfig = new AWSConfig({
 
 const s3 = new S3Client(awsConfig)
 
-const reportPath = "lcp-settle-api/"
 
-const merchantName = `${reportPath}lcp-merchant-report.html`
+const merchantName = 'lcp-merchant-report.html'
 const merchantReport = open(`./report/${merchantName}`, 'r')
 
-const paymentFeeName = `${reportPath}lcp-payment-fee-report.html`
+const paymentFeeName = 'lcp-payment-fee-report.html'
 const paymentFeeReport = open(`./report/${paymentFeeName}`, 'r')
 
-const bucketName = 'lcp-settle-auto-test-reports'
+const bucketName = 'lcp-settle-api/lcp-settle-auto-test-reports'
 
 
 export default function () {
