@@ -3,53 +3,49 @@ kind: Pod
 metadata:
   name: vol1
 spec:
-  securityContext:
-    fsGroup: 2000
+#  securityContext:
+#    fsGroup: 2000
   initContainers:
   - name: chown
     image: debian:stable-slim
     command:
       - /bin/sh
       - -c
-      - "chown -R 1001:1001 /etc/k6-config"
+      - "chown -R 1001:1001 /k6-scripts"
     volumeMounts:
-      - mountPath: /etc/k6-config
-        name: cache-volume
+      - mountPath: /k6-scripts/report
+        name: k6-volume
   containers:
     - image: loadimpact/k6:latest
-      securityContext:
-        runAsUser: 1001
-        runAsGroup: 2000
+#      securityContext:
+#        runAsUser: 1001
+#        runAsGroup: 2000
       name: vm1
       #      command: ["sleep", "10m"]
-      command: ['k6','run',  "/etc/k6-config/test-merchant-apis.js"]
+      command: ['k6','run',  "/k6-scripts/test-merchant-apis.js"]
 #      args:
 #        - run
 #        - /k6-scripts/test-merchant-apis.js --out json=test.json
       volumeMounts:
-        - mountPath: /etc/k6-config
-          name: cache-volume
-        - mountPath: /etc/k6-config/test-merchant-apis.js
+        - mountPath: /k6-scripts/report
+          name: k6-volume
+        - mountPath: /k6-scripts/test-merchant-apis.js
           name: k6-scripts
           subPath: test-merchant-apis.js
     - name: vm2
       image: nginx
       volumeMounts:
-        - mountPath: /etc/k6-config
-          name: cache-volume
-  #      volumeMounts:
-  #        - mountPath: /
-  #          name: k6-scripts
-  #          subPath: k6-scripts
+        - mountPath: /k6-scripts/report
+          name: k6-volume
   volumes:
-    - name: cache-volume
+    - name: k6-volume
       #      persistentVolumeClaim:
       #        claimName: test-volume
-      hostPath:
-        # 宿主上目录位置
-        path: /etc/k6-config
-        type: DirectoryOrCreate
-#      emptyDir: {}
+#      hostPath:
+#        # 宿主上目录位置
+#        path: /k6-scripts/report
+#        type: DirectoryOrCreate
+      emptyDir: {}
     - name: k6-scripts
       configMap:
         name: k6-scripts
