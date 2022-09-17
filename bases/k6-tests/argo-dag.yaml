@@ -11,14 +11,14 @@ spec:
     - name: k6-integration
       dag:
         tasks:
-#          - name: wait-sync
-#            template: wait-sync
-#          - name: k6-merchant
-#            dependencies: [wait-sync]
-#            template: k6-merchant
-#            continueOn:
-#              failed: true
-#              error: true
+          - name: wait-sync
+            template: wait-sync
+          - name: k6-merchant
+            dependencies: [wait-sync]
+            template: k6-merchant
+            continueOn:
+              failed: true
+              error: true
 #          - name: k6-payment-fee
 #            dependencies: [wait-sync]
 #            template: k6-payment-fee
@@ -32,7 +32,7 @@ spec:
 #              failed: true
 #              error: true
           - name: k6-upload-report
-#            dependencies: [k6-merchant]
+            dependencies: [k6-merchant]
 #            dependencies: [k6-merchant, k6-payment-fee, k6-settlement-policy]
             template: k6-upload-report
 
