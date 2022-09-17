@@ -22,14 +22,14 @@ spec:
         tasks:
           - name: wait-sync
             template: wait-sync
-          - name: k6-merchant
-            dependencies: [wait-sync]
-            template: k6-merchant
-            continueOn:
-              failed: true
-              error: true
+#          - name: k6-merchant
+#            dependencies: [wait-sync]
+#            template: k6-merchant
+#            continueOn:
+#              failed: true
+#              error: true
           - name: k6-payment-fee
-            dependencies: [k6-merchant]
+#            dependencies: [k6-merchant]
             template: k6-payment-fee
             continueOn:
               failed: true
