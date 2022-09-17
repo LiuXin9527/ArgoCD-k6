@@ -41,7 +41,7 @@ spec:
 #              failed: true
 #              error: true
           - name: k6-upload-report
-            dependencies: [k6-merchant]
+            dependencies: [k6-payment-fee]
 #            dependencies: [k6-merchant, k6-payment-fee, k6-settlement-policy]
             template: k6-upload-report
 
