@@ -38,7 +38,7 @@ spec:
           subPath: report
         - mountPath: /k6-scripts/test-merchant-apis.js
           name: k6-scripts
-          subPath: test-merchant-apis.js
+#          subPath: test-merchant-apis.js
     - name: vm2
       image: nginx
       volumeMounts:
