@@ -40,9 +40,9 @@ spec:
           subPath: test-merchant-apis.js
     - name: vm2
       image: nginx
-#      volumeMounts:
-#        - mountPath: /k6-scripts/report
-#          name: k6-volume
+      volumeMounts:
+        - mountPath: /k6-scripts/report
+          name: k6-volume
   volumes:
     - name: k6-volume
       #      persistentVolumeClaim:
