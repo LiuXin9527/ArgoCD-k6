@@ -15,9 +15,6 @@ spec:
         resources:
           requests:
             storage: 1Gi
-#  volumes:
-#    - name: k6-volume
-#      emptyDir: {}
   templates:
     - name: k6-integration
       dag:
@@ -30,12 +27,12 @@ spec:
             continueOn:
               failed: true
               error: true
-#          - name: k6-payment-fee
-#            dependencies: [wait-sync]
-#            template: k6-payment-fee
-#            continueOn:
-#              failed: true
-#              error: true
+          - name: k6-payment-fee
+            dependencies: [wait-sync]
+            template: k6-payment-fee
+            continueOn:
+              failed: true
+              error: true
 #          - name: k6-settlement-policy
 #            dependencies: [wait-sync]
 #            template: k6-settlement-policy
@@ -64,9 +61,6 @@ spec:
             mountPath: /k6-scripts/test-merchant-apis.js
             subPath: test-merchant-apis.js
       volumes:
-#        - name: k6-volume
-#          emptyDir:
-#            medium: Memory
         - name: k6-scripts
           configMap:
             name: k6-scripts
@@ -86,9 +80,6 @@ spec:
             mountPath: /k6-scripts/test-payment-fee-apis.js
             subPath: test-merchant-apis.js
       volumes:
-#        - name: k6-volume
-#          emptyDir:
-#            medium: Memory
         - name: k6-scripts
           configMap:
             name: k6-scripts
