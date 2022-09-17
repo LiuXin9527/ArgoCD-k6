@@ -19,7 +19,7 @@ const merchantReport = open(`./report/${merchantName}`, 'r')
 const paymentFeeName = 'lcp-payment-fee-report.html'
 const paymentFeeReport = open(`./report/${paymentFeeName}`, 'r')
 
-const bucketName = 'lcp-settle-api/lcp-settle-auto-test-reports'
+const bucketName = 'lcp-settle-auto-test-reports/lcp-settle-api'
 
 
 export default function () {
