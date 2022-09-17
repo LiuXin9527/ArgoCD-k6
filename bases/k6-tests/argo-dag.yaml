@@ -29,7 +29,7 @@ spec:
               failed: true
               error: true
           - name: k6-payment-fee
-            dependencies: [wait-sync]
+            dependencies: [k6-merchant]
             template: k6-payment-fee
             continueOn:
               failed: true
