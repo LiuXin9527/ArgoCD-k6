@@ -89,6 +89,7 @@ spec:
         volumeMounts:
           - name: k6-volume
             mountPath: /k6-scripts/report
+            subPath: report
           - name: k6-scripts
             mountPath: /k6-scripts/test-settlement-policy-apis.js
             subPath: test-settlement-policy-apis.js
@@ -109,6 +110,7 @@ spec:
         volumeMounts:
           - name: k6-volume
             mountPath: /k6-scripts/report
+            subPath: report
           - name: k6-scripts
             mountPath: /k6-scripts
             subPath: k6-scripts
