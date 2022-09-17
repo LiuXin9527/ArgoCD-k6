@@ -11,14 +11,14 @@ spec:
     - name: k6-integration
       dag:
         tasks:
-#          - name: wait-sync
-#            template: wait-sync
-#          - name: k6-merchant
-#            dependencies: [wait-sync]
-#            template: k6-merchant
-#            continueOn:
-#              failed: true
-#              error: true
+          - name: wait-sync
+            template: wait-sync
+          - name: k6-merchant
+            dependencies: [wait-sync]
+            template: k6-merchant
+            continueOn:
+              failed: true
+              error: true
 #          - name: k6-payment-fee
 #            dependencies: [wait-sync]
 #            template: k6-payment-fee
@@ -32,7 +32,7 @@ spec:
 #              failed: true
 #              error: true
           - name: k6-upload-report
-#            dependencies: [k6-merchant]
+            dependencies: [k6-merchant]
 #            dependencies: [k6-merchant, k6-payment-fee, k6-settlement-policy]
             template: k6-upload-report
 
@@ -112,19 +112,37 @@ spec:
           - name: k6-volume
             mountPath: /k6-scripts/report
             subPath: report
-          - name: k6-scripts
+          - name: k6-upload
             mountPath: /k6-scripts/upload-report.js
             subPath: upload-report.js
+          - name: aws-map
+            mountPath: /k6-scripts/aws.min.js.map
+            subPath: aws.min.js.map
+          - name: aws-js
+            mountPath: /k6-scripts/aws.min.js
+            subPath: aws.min.js
       volumes:
         - name: k6-volume
           emptyDir: {}
-        - name: k6-scripts
+        - name: k6-upload
           configMap:
             name: k6-scripts
             items:
               - key: 'upload-report.js'
                 path: 'upload-report.js'
+#              - key: 'aws.min.js.map'
+#                path: 'aws.min.js.map'
+#              - key: 'aws.min.js'
+#                path: 'aws.min.js'
+        - name: aws-map
+          configMap:
+            name: k6-scripts
+            items:
               - key: 'aws.min.js.map'
                 path: 'aws.min.js.map'
+        - name: aws-js
+          configMap:
+            name: k6-scripts
+            items:
               - key: 'aws.min.js'
                 path: 'aws.min.js'
