@@ -26,7 +26,7 @@ export default function () {
     }
 
     s3.putObject(bucketName, merchantName, merchantReport);
-
+    s3.putObject(bucketName, "lcp-payment-fee-report.html", open(`./report/lcp-payment-fee-report.html`, 'r'));
     s3.getObject(bucketName, merchantName);
 
 }
