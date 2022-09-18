@@ -74,10 +74,10 @@ configMapGenerator:
       - KAFKA_JKS_PASSWORD=imf-client
       - KAFKA_BOOTSTRAP_SERVERS=kf01-vdajp-imf.linecorp-dev.com:11498,kf02-vdajp-imf.linecorp-dev.com:11498,kf03-vdajp-imf.linecorp-dev.com:11498
       - KAFKA_SASL_JAAS_CONFIG=org.apache.kafka.common.security.scram.ScramLoginModule required username="lcp-settle-27602eacef564a0995ec9413589be96f" password="BT3OY8kvhggL";
-      - name: lcp-settle-oca-env
-        literals:
-          - NEXT_PUBLIC_API_URL=https://lcp-settle-api.line-apps-beta.com
-          - NEXT_PUBLIC_API_KEY=_Ed6edFW27*MB!BR.3ghJbHT2ZpBcj3vKW.WNj49Ao-NBe2WMHr
-          - NEXT_PUBLIC_PERMISSION=tw_ec_exam,tw_ec_developer,lcp_admin,lcp_qa
-          - NEXT_PUBLIC_SELLERDOMAIN=https://oca-admin.beta-sentinel.linecorp.com
-          - NEXT_PUBLIC_SERVICE_CHANNEL_CODE=MP_TW
+  - name: lcp-settle-oca-env
+    literals:
+      - NEXT_PUBLIC_API_URL=https://lcp-settle-api.line-apps-beta.com
+      - NEXT_PUBLIC_API_KEY=_Ed6edFW27*MB!BR.3ghJbHT2ZpBcj3vKW.WNj49Ao-NBe2WMHr
+      - NEXT_PUBLIC_PERMISSION=tw_ec_exam,tw_ec_developer,lcp_admin,lcp_qa
+      - NEXT_PUBLIC_SELLERDOMAIN=https://oca-admin.beta-sentinel.linecorp.com
+      - NEXT_PUBLIC_SERVICE_CHANNEL_CODE=MP_TW
