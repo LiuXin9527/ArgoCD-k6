@@ -9,10 +9,7 @@ resources:
 #  - argo-role.yaml
 #  - pre-sync-job.yaml
 #  - argo-workflow.yaml
-#  - k6-test-1.yaml
-#  - k6-test.yaml
-#  - pvc.yaml
-#  - hostpath.yaml
+  - common.yaml
   - argo-dag.yaml
 
 configMapGenerator:

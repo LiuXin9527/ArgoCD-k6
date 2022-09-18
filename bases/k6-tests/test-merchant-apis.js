@@ -27,6 +27,9 @@ export default function () {
     const host = __ENV.HOST || 'http://localhost:8080';
     const token = __ENV.AUTH_TOKEN || '_Ed6edFW27*MB!BR.3ghJbHT2ZpBcj3vKW.WNj49Ao-NBe2WMHr';
     const apiVer = __ENV.API_VERSION || 'v1';
+
+    console.log(host)
+    console.log(token)
     const baseUrl = `${host}/api/${apiVer}`;
     const params = {
         headers: {

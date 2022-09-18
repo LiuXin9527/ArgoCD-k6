@@ -53,6 +53,17 @@ spec:
       container:
         image: loadimpact/k6
         imagePullPolicy: IfNotPresent
+        env:
+          - name: HOST
+            valueFrom:
+              configMapKeyRef:
+                name: lcp-settle-oca-env
+                key: NEXT_PUBLIC_API_URL
+          - name: AUTH_TOKEN
+            valueFrom:
+              configMapKeyRef:
+                name: lcp-settle-oca-env
+                key: NEXT_PUBLIC_API_KEY
         command: ['k6','run',"-eHOST=https://lcp-settle-api.line-apps-beta.com",  "/k6-scripts/test-merchant-apis.js"]
         volumeMounts:
           - name: k6-volume
