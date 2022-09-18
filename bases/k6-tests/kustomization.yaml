@@ -9,7 +9,7 @@ resources:
 #  - argo-role.yaml
 #  - pre-sync-job.yaml
 #  - argo-workflow.yaml
-  - common
+  - common.yaml
   - argo-dag.yaml
 
 configMapGenerator:
