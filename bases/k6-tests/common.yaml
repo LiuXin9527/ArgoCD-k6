@@ -63,7 +63,3 @@ configMapGenerator:
     - NEXT_PUBLIC_SELLERDOMAIN=https://oca-admin.beta-sentinel.linecorp.com
     - NEXT_PUBLIC_SERVICE_CHANNEL_CODE=MP_TW
 
-secretGenerator:
-- name: imf-kafka-client-keystore
-  files:
-  - beta-imf-kafka-client.truststore.jks
