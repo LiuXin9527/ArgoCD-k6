@@ -15,7 +15,7 @@ spec:
         storageClassName: standard
         resources:
           requests:
-            storage: 1Gi
+            storage: 0.1Gi
   templates:
     - name: k6-integration
       dag:
