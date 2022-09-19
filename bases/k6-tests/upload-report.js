@@ -21,17 +21,6 @@ const merchantName = 'lcp-merchant-report.html'
 const paymentFeeName = 'lcp-payment-fee-report.html'
 const settlePolicyName = 'lcp-settle-policy-report.html'
 
-// const merchantTarget = `${bucketPath}${merchantName}`
-// const merchantReport = open(`./${merchantName}`, 'r')
-//
-
-// const paymentFeeTarget = `lcp-settle-api/${paymentFeeName}`
-// const paymentFeeReport = open(`./report/${paymentFeeName}`, 'r')
-//
-// const settlePolicyName = 'lcp-settle-policy-report.html'
-// const settlePolicyTarget = `${bucketPath}${settlePolicyName}`
-// const settlePolicyReport = open(`./report/${settlePolicyName}`, 'r')
-
 const reportArray = [
     {
         name: "merchant",
@@ -46,6 +35,7 @@ const reportArray = [
         reportJson: JSON.parse(open('./report/lcp-payment-fee-report.json', 'r'))
     },
     // {
+    //     name: "settlePolicy",
     //     bucketTarget: `${bucketPath}${settlePolicyName}`,
     //     reportFile: open(`./report/${settlePolicyName}`, 'r'),
     //     reportJson:JSON.parse(open(`./report/lcp-settle-policy-report.json`, 'r'))
@@ -70,11 +60,6 @@ function sendMessage(message) {
 export default function () {
     const envName = __ENV.ENV_NAME || 'local';
 
-    const buckets = s3.listBuckets();
-
-    // if (buckets.filter((b) => b.name === bucketName).length == 0) {
-    //     exec.test.abort();
-    // }
 
     for (let obj of reportArray) {
         s3.putObject(bucketName, obj.bucketTarget, obj.reportFile);

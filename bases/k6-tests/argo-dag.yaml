@@ -173,36 +173,40 @@ spec:
               configMapKeyRef:
                 name: lcp-settle-api-env
                 key: SPRING_PROFILES_ACTIVE
-        command: [ 'k6','run',  "/k6-scripts/upload-report.js" ]
+        command: [ 'k6','run',  "/k6-scripts/script/upload-report.js" ]
         volumeMounts:
           - name: k6-volume
             mountPath: /k6-scripts/report
             subPath: report
-          - name: k6-upload
-            mountPath: /k6-scripts/upload-report.js
-            subPath: upload-report.js
-          - name: aws-map
-            mountPath: /k6-scripts/aws.min.js.map
-            subPath: aws.min.js.map
-          - name: aws-js
-            mountPath: /k6-scripts/aws.min.js
-            subPath: aws.min.js
+          - name: k6-scripts
+            mountPath: /k6-scripts/script
+            subPath: script
+#          - name: aws-map
+#            mountPath: /k6-scripts/aws.min.js.map
+#            subPath: aws.min.js.map
+#          - name: aws-js
+#            mountPath: /k6-scripts/aws.min.js
+#            subPath: aws.min.js
       volumes:
-        - name: k6-upload
+        - name: k6-scripts
           configMap:
             name: k6-scripts
             items:
               - key: 'upload-report.js'
                 path: 'upload-report.js'
-        - name: aws-map
-          configMap:
-            name: k6-scripts
-            items:
               - key: 'aws.min.js.map'
                 path: 'aws.min.js.map'
-        - name: aws-js
-          configMap:
-            name: k6-scripts
-            items:
               - key: 'aws.min.js'
                 path: 'aws.min.js'
+#        - name: aws-map
+#          configMap:
+#            name: k6-scripts
+#            items:
+#              - key: 'aws.min.js.map'
+#                path: 'aws.min.js.map'
+#        - name: aws-js
+#          configMap:
+#            name: k6-scripts
+#            items:
+#              - key: 'aws.min.js'
+#                path: 'aws.min.js'
