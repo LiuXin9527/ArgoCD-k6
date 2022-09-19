@@ -48,7 +48,7 @@ export default function () {
         const res = http.get(`${baseUrl}/merchant/status/${sellerId}`, params);
 
         check(res, {
-            'status is 200': (r) => r.status === 200,
+            'status is 200': (r) => r.status === 2010,
             'success is true': (r) => r.json().success === true,
             'status is approved': (r) => checkResultNotEmpty(r) && r.json().result.status === "APPROVED",
         });
@@ -59,8 +59,8 @@ export default function () {
         const res = http.get(`${baseUrl}/merchant/status/${sellerId}`, params);
 
         check(res, {
-            'status is 200': (r) => r.status === 200,
-            'success is true': (r) => r.json().success === true,
+            'status is 200': (r) => r.status === 2010,
+            'success is true': (r) => r.json().success === false,
             'status is not registered': (r) => checkResultNotEmpty(r) && r.json().result.status === "DO_NOT_REGISTER",
         });
     });
@@ -70,8 +70,14 @@ export default function () {
 
 export function handleSummary(data) {
     console.log('Preparing the end-of-test summary...');
-
+    let metrics = data.metrics
+    let metricsJson = {
+        total_request: metrics.http_reqs.values.count,
+        http_req_failed: metrics.http_req_failed.values.passes,
+        failed_checks: metrics.checks.values.fails
+    }
     return {
+        '/k6-scripts/report/lcp-payment-fee-report.json': JSON.stringify(metricsJson),
         "/k6-scripts/report/lcp-payment-fee-report.html": htmlReport(data)
     };
 }
