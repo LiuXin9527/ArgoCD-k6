@@ -173,11 +173,6 @@ spec:
               configMapKeyRef:
                 name: lcp-settle-api-env
                 key: SPRING_PROFILES_ACTIVE
-          - name: AUTH_TOKEN
-            valueFrom:
-              configMapKeyRef:
-                name: lcp-settle-oca-env
-                key: NEXT_PUBLIC_API_KEY
         command: [ 'k6','run',  "/k6-scripts/upload-report.js" ]
         volumeMounts:
           - name: k6-volume
@@ -199,8 +194,6 @@ spec:
             items:
               - key: 'upload-report.js'
                 path: 'upload-report.js'
-              - key: 'aws.min.js.map'
-                path: 'aws.min.js.map'
         - name: aws-map
           configMap:
             name: k6-scripts
