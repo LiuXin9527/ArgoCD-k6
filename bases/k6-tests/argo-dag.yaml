@@ -179,8 +179,8 @@ spec:
             mountPath: /k6-scripts/report
             subPath: report
           - name: k6-upload
-            mountPath: /k6-scripts/script
-            subPath: script
+            mountPath: /k6-scripts/upload-report.js
+            subPath: upload-report.js
           - name: aws-map
             mountPath: /k6-scripts/aws.min.js.map
             subPath: aws.min.js.map
