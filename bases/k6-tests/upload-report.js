@@ -56,8 +56,9 @@ export default function () {
     // }
 
     for (let obj in reportArray) {
+        console.log(obj.bucketTarget)
         s3.putObject(bucketName, obj.bucketTarget, obj.reportFile);
-        s3.putObject(bucketName, obj.bucketTarget, obj.reportJson);
+        // s3.putObject(bucketName, obj.bucketTarget, obj.reportJson);
     }
 
     // s3.putObject(bucketName, merchantTarget, merchantReport);
