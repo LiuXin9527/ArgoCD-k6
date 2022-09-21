@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: guestbook-ui
-  entrypoint: k6-integration
+  entrypoint: guestbook-ui
   templates:
     - name: argo-workflow
       dag:
