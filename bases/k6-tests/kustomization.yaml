@@ -6,6 +6,5 @@ configurations:
 
 resources:
   - argo-dag.yaml
-  - guestbook-ui-svc.yaml
 
 

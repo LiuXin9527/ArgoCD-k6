@@ -3,8 +3,35 @@ kind: Service
 metadata:
   name: guestbook-ui
 spec:
-  ports:
-    - port: 8090
-      targetPort: 8090
-  selector:
-    app: guestbook-ui
+  entrypoint: diamond
+  templates:
+    - name: diamond
+      dag:
+        tasks:
+          - name: A
+            template: echo
+            arguments:
+              parameters: [{name: message, value: A}]
+          - name: B
+            depends: "A"
+            template: echo
+            arguments:
+              parameters: [{name: message, value: B}]
+          - name: C
+            depends: "A"
+            template: echo
+            arguments:
+              parameters: [{name: message, value: C}]
+          - name: D
+            depends: "B && C"
+            template: echo
+            arguments:
+              parameters: [{name: message, value: D}]
+
+    - name: echo
+      inputs:
+        parameters:
+          - name: message
+      container:
+        image: alpine:3.7
+        command: [echo, "{{inputs.parameters.message}}"]
