@@ -1,11 +1,11 @@
-apiVersion: v1
-kind: Service
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
 metadata:
-  name: guestbook-ui
+  name: dag-task
 spec:
-  entrypoint: diamond
+  entrypoint: dag-task-example
   templates:
-    - name: diamond
+    - name: dag-task-example
       dag:
         tasks:
           - name: A
