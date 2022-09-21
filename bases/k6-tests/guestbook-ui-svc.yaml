@@ -19,4 +19,4 @@ spec:
       container:
         image: gcr.io/heptio-images/ks-guestbook-demo:0.1
         ports:
-          - containerPort: 80
+          - containerPort: 8090
